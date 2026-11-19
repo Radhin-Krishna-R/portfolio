@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F4F4F4">
+  <title>Radhin Krishna R. — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F4F4F4;
+      --ink: #000000;
+      --line: rgba(0,0,0,.78);
+      --muted: rgba(0,0,0,.56);
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+      --display: "Manrope", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      padding: clamp(14px, 3vw, 42px);
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .page { width: min(1320px, 100%); margin: 0 auto; }
+    .frame {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      gap: 1px;
+      box-shadow: 0 18px 55px rgba(0,0,0,.055);
+    }
+    .cell { background: var(--paper); min-width: 0; }
+
+    .topbar {
+      grid-column: 1 / -1;
+      min-height: 66px;
+      padding: 0 clamp(20px, 3.3vw, 46px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .eyebrow, .section-kicker {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+    .topbar-right { display: flex; align-items: center; gap: 9px; }
+    .topbar-right span {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--ink);
+      display: block;
+    }
+    .topbar-right small {
+      margin-left: 9px; font-size: 10px; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--muted);
+    }
+
+    .hero {
+      grid-column: span 3;
+      min-height: 360px;
+      padding: clamp(34px, 6.4vw, 88px) clamp(24px, 5.4vw, 76px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "R";
+      position: absolute;
+      right: 2.5%; bottom: -29%;
+      font: 500 clamp(190px, 29vw, 390px)/.8 var(--serif);
+      color: rgba(0,0,0,.035);
+      pointer-events: none;
+    }
+    .hero .intro {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 25px; position: relative; z-index: 1;
+    }
+    .intro-line { width: 34px; height: 1px; background: var(--ink); }
+    .intro span:last-child {
+      font-size: 10px; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--muted); font-weight: 600;
+    }
+    h1 {
+      margin: 0 0 25px;
+      max-width: 900px;
+      font: 500 clamp(3.2rem, 7.2vw, 7.3rem)/.98 var(--serif);
+      letter-spacing: -.055em;
+      position: relative; z-index: 1;
+    }
+    .role {
+      margin: 0; font: 400 clamp(.82rem, 1.45vw, 1.15rem)/1.6 var(--display);
+      letter-spacing: .16em; text-transform: uppercase;
+      position: relative; z-index: 1;
+    }
+    .role span { display: block; color: var(--muted); }
+
+    .portrait {
+      grid-column: span 1;
+      padding: clamp(18px, 2.3vw, 30px);
+      display: flex; align-items: center; justify-content: center;
+      min-height: 360px;
+    }
+    .portrait-wrap {
+      width: 100%; max-width: 290px; position: relative;
+      padding: 9px; border: 1px solid var(--ink);
+    }
+    .portrait-wrap::before {
+      content: ""; position: absolute; inset: 5px -5px -5px 5px;
+      border: 1px solid rgba(0,0,0,.35); z-index: 0;
+    }
+    .portrait img {
+      position: relative; z-index: 1; display: block; width: 100%;
+      aspect-ratio: 4 / 5; object-fit: cover; object-position: center;
+      filter: grayscale(100%); background: #e7e7e7;
+    }
+    .portrait-note {
+      display: flex; justify-content: space-between; gap: 8px;
+      margin-top: 12px; font-size: 9px; letter-spacing: .13em;
+      text-transform: uppercase; color: var(--muted);
+    }
+
+    .about {
+      grid-column: span 2;
+      padding: clamp(28px, 4.5vw, 60px);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .section-heading {
+      display: flex; align-items: center; gap: 13px; margin-bottom: 24px;
+    }
+    .section-number { font-size: 10px; letter-spacing: .15em; color: var(--muted); }
+    h2 { margin: 0; font: 500 clamp(2rem, 3vw, 2.8rem)/1 var(--serif); letter-spacing: -.035em; }
+    .heading-rule { flex: 1; height: 1px; background: rgba(0,0,0,.25); }
+    .about p {
+      max-width: 650px; margin: 0 0 15px;
+      font-size: clamp(.88rem, 1.1vw, .98rem);
+      line-height: 1.9; font-weight: 300; color: rgba(0,0,0,.82);
+    }
+    .about p:last-child { margin-bottom: 0; }
+
+    .directory {
+      grid-column: span 1;
+      padding: clamp(28px, 4vw, 52px) clamp(22px, 3vw, 38px);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .small-heading {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-bottom: 14px; margin-bottom: 12px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .small-heading span:last-child { font-size: 10px; color: var(--muted); }
+    .nav-list { display: flex; flex-direction: column; }
+    .nav-link {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,.13);
+      font: 500 clamp(1.15rem, 1.7vw, 1.45rem) var(--serif);
+      transition: padding .25s ease;
+    }
+    .nav-link:last-child { border-bottom: 0; }
+    .nav-link .arrow {
+      font: 400 16px var(--sans); opacity: .45;
+      transition: transform .25s ease, opacity .25s ease;
+    }
+    .nav-link:hover { padding-left: 7px; }
+    .nav-link:hover .arrow { transform: translateX(4px); opacity: 1; }
+
+    .socials {
+      grid-column: span 1;
+      padding: clamp(28px, 4vw, 52px) clamp(22px, 3vw, 38px);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .social-list { display: flex; flex-direction: column; }
+    .social-link {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 13px 0; border-bottom: 1px solid rgba(0,0,0,.13);
+      font-size: .92rem; font-weight: 500;
+      transition: padding .25s ease;
+    }
+    .social-link:last-child { border-bottom: 0; }
+    .social-link .arrow {
+      font-size: 17px; opacity: .5;
+      transition: transform .25s ease, opacity .25s ease;
+    }
+    .social-link:hover { padding-left: 7px; }
+    .social-link:hover .arrow { transform: translate(3px,-3px); opacity: 1; }
+
+    .shape-cell {
+      grid-column: span 2;
+      min-height: 260px;
+      position: relative;
+      overflow: hidden;
+      padding: 28px clamp(20px, 3vw, 42px);
+    }
+    .shape-meta {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 12px; margin-bottom: 25px;
+      font-size: 9px; letter-spacing: .17em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .shape-meta strong { color: var(--ink); font-weight: 700; }
+
+    .tool-grid {
+      display: grid; grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 19px 12px; align-items: center;
+    }
+    .tool-item {
+      min-width: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 8px;
+      text-align: center; transition: transform .25s ease;
+    }
+    .tool-item:hover { transform: translateY(-5px); }
+    .tool-icon {
+      width: 31px; height: 31px; object-fit: contain;
+      filter: grayscale(1) brightness(0);
+      opacity: .82; transition: opacity .25s ease, transform .25s ease;
+    }
+    .tool-item:hover .tool-icon { opacity: 1; transform: scale(1.08); }
+    .tool-icon-fallback {
+      width: 31px; height: 31px; display: grid; place-items: center;
+      border: 1px solid var(--ink); border-radius: 50%;
+      font: 600 11px var(--display);
+    }
+    .tool-item span:last-child {
+      font-size: 10px; line-height: 1.3; font-weight: 500;
+    }
+    .tool-note {
+      margin-top: 19px; font-size: 8px; letter-spacing: .13em;
+      text-transform: uppercase; color: var(--muted);
+    }
+
+    .interest-stage {
+      position: relative; width: min(100%, 440px); height: 180px;
+      margin: 0 auto 2px;
+    }
+    .interest-circle {
+      position: absolute; width: 164px; height: 116px;
+      border: 1px solid var(--ink); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      padding: 12px; text-align: center;
+      background: rgba(244,244,244,.45);
+      font: 500 12px/1.3 var(--display);
+      transition: transform .35s ease, background .35s ease;
+    }
+    .interest-circle:hover {
+      z-index: 2; background: var(--paper); transform: scale(1.07);
+    }
+    .interest-circle.econometrics { left: 8%; top: 0; transform: rotate(-12deg); }
+    .interest-circle.deep-learning { right: 8%; top: 0; transform: rotate(12deg); }
+    .interest-circle.financial { left: 8%; bottom: 0; transform: rotate(12deg); }
+    .interest-circle.time-series { right: 8%; bottom: 0; transform: rotate(-12deg); }
+    .interest-circle.machine-learning { left: 50%; top: 50%; width: 148px; height: 104px; transform: translate(-50%, -50%); z-index: 1; background: rgba(244,244,244,.82); }
+    .interest-circle.econometrics:hover { transform: rotate(-12deg) scale(1.07); }
+    .interest-circle.deep-learning:hover { transform: rotate(12deg) scale(1.07); }
+    .interest-circle.financial:hover { transform: rotate(12deg) scale(1.07); }
+    .interest-circle.time-series:hover { transform: rotate(-12deg) scale(1.07); }
+    .interest-circle.machine-learning:hover { transform: translate(-50%, -50%) scale(1.07); }
+
+    .footer {
+      grid-column: 1 / -1; padding: 17px clamp(20px, 3.3vw, 46px);
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 12px; font-size: 9px; letter-spacing: .13em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .footer span:first-child { color: var(--ink); font-weight: 600; }
+
+    @media (max-width: 760px) {
+      body { padding: 12px; }
+      .frame { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero { grid-column: 1 / -1; min-height: 300px; padding: 42px 26px; }
+      .portrait { grid-column: 1 / -1; min-height: 0; padding: 28px; }
+      .portrait-wrap { width: min(68%, 260px); }
+      .about { grid-column: 1 / -1; padding: 34px 26px; }
+      .directory, .socials { grid-column: span 1; padding: 30px 22px; }
+      .shape-cell { min-height: 255px; padding: 22px 16px; }
+      .shape-meta { font-size: 8px; margin-bottom: 22px; }
+      .tool-grid { gap: 17px 7px; }
+      .tool-icon, .tool-icon-fallback { width: 27px; height: 27px; }
+      .tool-item span:last-child { font-size: 9px; }
+      .interest-stage { height: 175px; }
+      .interest-circle { width: 145px; height: 108px; font-size: 11px; }
+      .interest-circle.machine-learning { width: 132px; height: 98px; }
+      .footer { grid-column: 1 / -1; }
+    }
+    @media (max-width: 480px) {
+      .topbar { min-height: 56px; padding: 0 17px; }
+      .topbar-right small { display: none; }
+      .hero { min-height: 265px; }
+      h1 { font-size: clamp(3rem, 14vw, 4.5rem); }
+      .directory, .socials { grid-column: 1 / -1; padding: 28px 26px; }
+      .shape-cell { min-height: 250px; }
+      .tool-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+      .interest-stage { height: 170px; }
+      .interest-circle { width: 132px; height: 100px; font-size: 10px; }
+      .interest-circle.machine-learning { width: 118px; height: 90px; }
+      .footer { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="frame">
+      <header class="cell topbar">
+        <span class="eyebrow">About myself</span>
+        <div class="topbar-right" aria-label="Three decorative dots">
+          <span></span><span></span><span></span>
+          <small>Personal portfolio</small>
+        </div>
+      </header>
+
+      <section class="cell hero">
+        <div class="intro"><span class="intro-line"></span><span>Research · Data · Decisions</span></div>
+        <h1>Radhin<br>Krishna R.</h1>
+        <p class="role">Data Scientist <span>Quantitative Researcher</span></p>
+      </section>
+
+      <aside class="cell portrait">
+        <div class="portrait-wrap">
+          <img src="bw - 345 KB.jpg" alt="Portrait of Radhin Krishna">
+          <div class="portrait-note"><span>Vellore, India</span><span>01 / 04</span></div>
+        </div>
+      </aside>
+
+      <section class="cell about" id="about">
+        <div class="section-heading">
+          <span class="section-number">01</span>
+          <h2>About</h2>
+          <span class="heading-rule"></span>
+        </div>
+        <p>
+          I am a quantitative researcher with a strong foundation in statistical methods, machine learning, and data visualization. I hold a B.Sc. in Data Science (9.5 CGPA) and am currently pursuing my M.Sc. in Data Science at Vellore Institute of Technology.
+        </p>
+        <p>
+          My experience spans from evaluating policy programs using causal inference at Naya Neethi Policy &amp; Co. to developing deep learning frameworks (TFT, N-BEATS) for macroeconomic stress testing. I am passionate about translating complex datasets into validated findings and communicating quantitative insights that drive better financial and product decisions.
+        </p>
+      </section>
+
+      <nav class="cell directory" aria-label="Main navigation">
+        <div class="small-heading">
+          <span class="section-kicker">Directory</span><span>02 — Navigate</span>
+        </div>
+        <div class="nav-list">
+          <a class="nav-link" href="index.html"><span>Home</span><span class="arrow">↗</span></a>
+          <a class="nav-link" href="resume.html"><span>Resume</span><span class="arrow">↗</span></a>
+          <a class="nav-link" href="projects.html"><span>Projects</span><span class="arrow">↗</span></a>
+        </div>
+      </nav>
+
+      <section class="cell socials" aria-label="External links">
+        <div class="small-heading">
+          <span class="section-kicker">Elsewhere</span><span>03 — Connect</span>
+        </div>
+        <div class="social-list">
+          <a class="social-link" href="https://github.com/Radhin-Krishna-R" target="_blank" rel="noopener noreferrer"><span>GitHub</span><span class="arrow">↗</span></a>
+          <a class="social-link" href="https://public.tableau.com/app/profile/radhinkrishna" target="_blank" rel="noopener noreferrer"><span>Tableau Public</span><span class="arrow">↗</span></a>
+          <a class="social-link" href="https://www.linkedin.com/in/radhin-krishna-r/" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><span class="arrow">↗</span></a>
+          <a class="social-link" href="https://radhinkrishna.wixsite.com/radhin-portfolio/blog" target="_blank" rel="noopener noreferrer"><span>Blog</span><span class="arrow">↗</span></a>
+        </div>
+      </section>
+
+      <section class="cell shape-cell" aria-label="Tools and technologies">
+        <div class="shape-meta"><strong>04 / Tools &amp; Technologies</strong><span>Technical toolkit</span></div>
+        <div class="tool-grid">
+          <div class="tool-item"><img class="tool-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="" loading="lazy"><span>Python</span></div>
+          <div class="tool-item"><img class="tool-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" alt="" loading="lazy"><span>R</span></div>
+          <div class="tool-item"><span class="tool-icon-fallback">SQL</span><span>SQL</span></div>
+          <div class="tool-item"><img class="tool-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="" loading="lazy"><span>Pandas</span></div>
+          <div class="tool-item"><img class="tool-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="" loading="lazy"><span>NumPy</span></div>
+          <div class="tool-item"><img class="tool-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="" loading="lazy"><span>PyTorch</span></div>
+          <div class="tool-item"><img class="tool-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" alt="" loading="lazy"><span>Scikit-learn</span></div>
+          <div class="tool-item"><span class="tool-icon-fallback">T</span><span>Tableau</span></div>
+          <div class="tool-item"><img class="tool-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="" loading="lazy"><span>Git</span></div>
+          <div class="tool-item"><img class="tool-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" alt="" loading="lazy"><span>Jupyter</span></div>
+        </div>
+        <div class="tool-note">Selected tools across programming, analysis &amp; modelling</div>
+      </section>
+
+      <section class="cell shape-cell" aria-label="Research interests">
+        <div class="shape-meta"><strong>05 / Research Interests</strong><span>Areas of inquiry</span></div>
+        <div class="interest-stage">
+          <div class="interest-circle econometrics">Econometrics</div>
+          <div class="interest-circle deep-learning">Deep Learning</div>
+          <div class="interest-circle financial">Financial Analytics</div>
+          <div class="interest-circle time-series">Time Series</div>
+          <div class="interest-circle machine-learning">Machine Learning</div>
+        </div>
+      </section>
+
+      <footer class="cell footer">
+        <span>Radhin Krishna R.</span>
+        <span>Curiosity, measured in data.</span>
+        <span>© 2026</span>
+      </footer>
+    </div>
+  </main>
+</body>
+</html>

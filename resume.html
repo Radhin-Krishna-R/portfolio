@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F4F4F4">
+  <title>Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F4F4F4;
+      --ink: #000000;
+      --muted: rgba(0,0,0,.56);
+      --line: rgba(0,0,0,.18);
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+      --display: "Manrope", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; padding: clamp(14px, 3vw, 42px);
+      background: var(--paper); color: var(--ink);
+      font-family: var(--sans); -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    /* Reduced width from 1320px to 1000px to make the CV a bit smaller */
+    .page { width: min(1000px, 100%); margin: 0 auto; }
+    .frame {
+      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px; background: var(--ink); border: 1px solid var(--ink);
+      box-shadow: 0 18px 55px rgba(0,0,0,.055);
+    }
+    .cell { background: var(--paper); min-width: 0; }
+    .topbar {
+      grid-column: 1 / -1; min-height: 66px; padding: 0 clamp(20px, 3.3vw, 46px);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .brand { font: 500 1.55rem var(--serif); letter-spacing: -.06em; }
+    .nav { display: flex; gap: clamp(14px, 2.6vw, 34px); align-items: center; }
+    .nav a {
+      position: relative; padding: 8px 0; font-size: 10px; font-weight: 700;
+      letter-spacing: .16em; text-transform: uppercase;
+    }
+    .nav a::after {
+      content: ""; position: absolute; left: 0; bottom: 3px; width: 100%; height: 1px;
+      background: var(--ink); transform: scaleX(0); transform-origin: right;
+      transition: transform .3s ease;
+    }
+    .nav a:hover::after, .nav a[aria-current="page"]::after {
+      transform: scaleX(1); transform-origin: left;
+    }
+    /* Reduced hero padding slightly */
+    .hero {
+      grid-column: 1 / -1; padding: clamp(32px, 5vw, 70px) clamp(24px, 5.5vw, 76px) 38px;
+      position: relative; overflow: hidden;
+    }
+    .hero::after {
+      content: "CV"; position: absolute; right: 4%; bottom: -30%;
+      font: 500 clamp(170px, 27vw, 350px)/.8 var(--serif);
+      letter-spacing: -.09em; color: rgba(0,0,0,.035); pointer-events: none;
+    }
+    .eyebrow, .kicker {
+      font-size: 10px; font-weight: 700; letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+    .eyebrow { display: flex; align-items: center; gap: 12px; color: var(--muted); }
+    .eyebrow::before { content: ""; width: 32px; height: 1px; background: var(--ink); }
+    /* Reduced H1 max font size */
+    h1 {
+      position: relative; z-index: 1; margin: 22px 0 18px;
+      font: 500 clamp(3rem, 7vw, 7rem)/.92 var(--serif);
+      letter-spacing: -.065em;
+    }
+    .hero-bottom {
+      display: flex; justify-content: flex-end; align-items: end;
+      gap: 20px; position: relative; z-index: 1;
+    }
+    .contact {
+      display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 12px 24px;
+      font-size: 11px; color: var(--muted); align-items: center;
+    }
+    .contact a { border-bottom: 1px solid rgba(0,0,0,.3); transition: border-color .2s; }
+    .contact a:hover { border-color: var(--ink); }
+    
+    /* Specific class to increase email size */
+    .email-link { font-size: 16px; font-weight: 600; color: var(--ink); }
+    
+    /* Reduced section padding slightly */
+    .section {
+      grid-column: span 2; padding: clamp(25px, 4vw, 50px);
+    }
+    .section.full { grid-column: 1 / -1; }
+    .section-head {
+      display: flex; align-items: center; gap: 13px; margin-bottom: 30px;
+    }
+    .num { font-size: 10px; letter-spacing: .15em; color: var(--muted); }
+    h2 { margin: 0; font: 500 clamp(1.8rem, 2.8vw, 2.5rem)/1 var(--serif); letter-spacing: -.04em; }
+    .rule { flex: 1; height: 1px; background: var(--line); }
+    .timeline { position: relative; padding-left: 22px; }
+    .timeline::before {
+      content: ""; position: absolute; left: 4px; top: 7px; bottom: 8px;
+      width: 1px; background: rgba(0,0,0,.22);
+    }
+    .entry { position: relative; padding: 0 0 29px 12px; }
+    .entry:last-child { padding-bottom: 0; }
+    .entry::before {
+      content: ""; position: absolute; left: -22px; top: 7px; width: 7px; height: 7px;
+      border: 1px solid var(--ink); border-radius: 50%; background: var(--paper);
+      transition: background .25s, transform .25s;
+    }
+    .entry:hover::before { background: var(--ink); transform: scale(1.25); }
+    h3 { margin: 0 0 6px; font: 600 1.05rem/1.4 var(--display); letter-spacing: -.02em; }
+    .meta {
+      margin: 0 0 11px; font-size: 9px; line-height: 1.6; font-weight: 700;
+      letter-spacing: .13em; text-transform: uppercase; color: var(--muted);
+    }
+    .entry p:not(.meta) {
+      margin: 0; font-size: .88rem; line-height: 1.8; font-weight: 300;
+      color: rgba(0,0,0,.82);
+    }
+    .entry ul { margin: 9px 0 0; padding-left: 17px; }
+    .entry li {
+      padding-left: 3px; margin: 5px 0; font-size: .86rem;
+      line-height: 1.75; font-weight: 300; color: rgba(0,0,0,.82);
+    }
+    .education .entry { padding-bottom: 24px; }
+    .education .entry p:not(.meta) { font-size: .84rem; }
+    .skills-section { grid-column: 1 / -1; padding: clamp(25px, 4vw, 50px); }
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px; border: 1px solid var(--ink); background: var(--ink);
+    }
+    .skill-group { background: var(--paper); padding: 23px 22px 25px; }
+    .skill-group h3 {
+      margin-bottom: 15px; font: 500 1.22rem var(--serif);
+    }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; }
+    .tag {
+      display: inline-block; padding: 7px 9px; border: 1px solid rgba(0,0,0,.45);
+      font-size: 9px; font-weight: 600; letter-spacing: .07em;
+      text-transform: uppercase; transition: color .22s, background .22s, transform .22s;
+    }
+    .tag:hover { background: var(--ink); color: var(--paper); transform: translateY(-2px); }
+    .cert-grid {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px; background: var(--ink); border: 1px solid var(--ink);
+    }
+    .cert {
+      min-height: 118px; padding: 22px; background: var(--paper);
+      display: flex; flex-direction: column; justify-content: space-between;
+      transition: background .25s, color .25s;
+    }
+    .cert:hover { background: var(--ink); color: var(--paper); }
+    .cert h3 { max-width: 420px; font: 500 1.12rem/1.35 var(--serif); }
+    .cert p {
+      margin: 15px 0 0; font-size: 9px; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+    }
+    .cert:hover p { color: rgba(244,244,244,.65); }
+    .download-row {
+      grid-column: 1 / -1; padding: 25px clamp(22px, 4vw, 52px);
+      display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    }
+    .download-row p {
+      margin: 0; font: italic 1.2rem var(--serif); color: var(--muted);
+    }
+    .download {
+      display: inline-flex; align-items: center; justify-content: center; gap: 22px;
+      padding: 16px 21px; background: var(--ink); color: var(--paper);
+      font-size: 9px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+      border: 1px solid var(--ink); transition: background .25s, color .25s, transform .25s;
+    }
+    .download:hover { background: var(--paper); color: var(--ink); transform: translateY(-3px); }
+    .download span { font-size: 16px; font-weight: 400; }
+    .footer {
+      grid-column: 1 / -1; padding: 17px clamp(20px, 3.3vw, 46px);
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+      font-size: 9px; letter-spacing: .13em; text-transform: uppercase; color: var(--muted);
+    }
+    .footer strong { color: var(--ink); font-weight: 700; }
+
+    /* Restrained entrance motion */
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .65s ease, transform .65s cubic-bezier(.2,.7,.2,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .entry, .skill-group, .cert { animation: settle .7s both; }
+    @keyframes settle { from { opacity: .5; } to { opacity: 1; } }
+
+    @media (max-width: 850px) {
+      .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-bottom { align-items: flex-start; flex-direction: column; }
+      .contact { justify-content: flex-start; }
+    }
+    @media (max-width: 680px) {
+      body { padding: 12px; }
+      .frame { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .topbar { grid-column: 1 / -1; padding: 0 17px; min-height: 58px; }
+      .nav { gap: 13px; }
+      .nav a { font-size: 8px; letter-spacing: .1em; }
+      .hero, .section, .section.full, .skills-section, .download-row, .footer { grid-column: 1 / -1; }
+      .hero { padding: 42px 25px 36px; }
+      h1 { font-size: clamp(3.4rem, 15vw, 5.5rem); }
+      .section, .skills-section { padding: 32px 25px; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .cert-grid { grid-template-columns: 1fr; }
+      .download-row { align-items: flex-start; flex-direction: column; }
+      .download { width: 100%; }
+      .footer { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="frame">
+      <header class="cell topbar">
+        <a class="brand" href="index.html" aria-label="Home">CV.</a>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="projects.html">Projects</a>
+          <a href="resume.html" aria-current="page">Resume</a>
+          <a href="https://www.linkedin.com/in/radhin-krishna-r/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        </nav>
+      </header>
+
+      <section class="cell hero reveal">
+        <div class="eyebrow">Profile / Experience / Capabilities</div>
+        <h1>Curriculum<br>Vitae<span style="font-style:italic">.</span></h1>
+        <div class="hero-bottom">
+          <div class="contact">
+            <a href="mailto:radhinkrishna@outlook.com" class="email-link">radhinkrishna@outlook.com</a>
+            <a href="tel:+916238977724">+91 62389 77724</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="cell section reveal" id="experience">
+        <div class="section-head"><span class="num">01</span><h2>Experience</h2><span class="rule"></span></div>
+        <div class="timeline">
+          <article class="entry">
+            <h3>Research Analyst Intern</h3>
+            <p class="meta">Naya Neethi Policy &amp; Co. · Mar 2025 — Apr 2025</p>
+            <ul>
+              <li>Contributed to an evaluation of the SLATE literacy and numeracy programme using quantitative research methods.</li>
+              <li>Worked with Difference-in-Differences and regression-discontinuity approaches to examine programme impact.</li>
+              <li>Developed visualizations and analytical metrics to communicate findings and support interpretation of evaluation results.</li>
+            </ul>
+          </article>
+          <article class="entry">
+            <h3>Associate Account Management Intern</h3>
+            <p class="meta">Sutherland Global · Jan 2025 — Feb 2025</p>
+            <ul>
+              <li>Supported order management and issue resolution across four North American floral e-commerce platforms, handling customer queries and transactional or technical issues.</li>
+              <li>Assisted 400+ customers from the U.S. and Canada using Five9, OMS, and AWS, building practical understanding of customer needs and service workflows.</li>
+            </ul>
+          </article>
+          <article class="entry">
+            <h3>Data Science &amp; Analytical Intern</h3>
+            <p class="meta">MedTourEasy</p>
+            <p>Executed data analysis and compiled actionable quantitative metrics to support operational goals.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="cell section education reveal" id="education">
+        <div class="section-head"><span class="num">02</span><h2>Education</h2><span class="rule"></span></div>
+        <div class="timeline">
+          <article class="entry">
+            <h3>M.Sc. in Data Science</h3>
+            <p class="meta">Vellore Institute of Technology · Jul 2026 — May 2028</p>
+            <p>Vellore, Tamil Nadu</p>
+          </article>
+          <article class="entry">
+            <h3>B.Sc. in Data Science</h3>
+            <p class="meta">Hindustan Institute of Technology and Science · Oct 2022 — May 2025</p>
+            <p>CGPA: 9.5 · Chennai, Tamil Nadu</p>
+          </article>
+          <article class="entry">
+            <h3>Class XII — PCM + Computer Science</h3>
+            <p class="meta">Rahmaniya HSS for Handicapped · Jun 2019 — May 2021</p>
+            <p>97.4% · Kozhikode, Kerala</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="cell section full reveal" id="projects">
+        <div class="section-head"><span class="num">03</span><h2>Selected Projects</h2><span class="rule"></span></div>
+        <div class="timeline">
+          <article class="entry">
+            <h3>Macroeconomic Stress Testing for Indian Bank Portfolios</h3>
+            <p class="meta">Python · Deep Learning (TFT, N-BEATS) · Sep 2026</p>
+            <ul>
+              <li>Developing a quarterly macroeconomic dataset for Indian bank portfolio risk analysis, covering GDP growth, inflation, interest rates, credit growth, exchange rates, and non-performing assets.</li>
+              <li>Investigating methods for analyzing macroeconomic conditions and assessing how adverse scenarios could affect credit risk in bank portfolios.</li>
+              <li>Focusing on data alignment, transparent assumptions, and limitations when combining indicators from different sources and frequencies.</li>
+            </ul>
+          </article>
+          <article class="entry">
+            <h3>Telecom Churn Prediction</h3>
+            <p class="meta">Python · RNN · Azure · SQL · Tableau · Oct 2024</p>
+            <ul>
+              <li>Built a recurrent neural network model to predict customer churn, achieving 71% accuracy.</li>
+              <li>Used Azure Synapse Analytics and Azure ML Studio in the deployment workflow and created a Tableau dashboard to visualize churn-related factors.</li>
+            </ul>
+          </article>
+          <article class="entry">
+            <h3>Fraud Detection Using SQL</h3>
+            <p class="meta">PostgreSQL · Statistical Analysis · Dec 2023</p>
+            <ul>
+              <li>Analyzed transaction data to identify suspicious patterns and flag potential fraud using SQL queries, pattern matching, and statistical analysis.</li>
+              <li>Built KPI-focused queries and monitoring logic to support risk identification and investigation.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="cell skills-section reveal" id="skills">
+        <div class="section-head"><span class="num">04</span><h2>Technical Skills</h2><span class="rule"></span></div>
+        <div class="skills-grid">
+          <div class="skill-group">
+            <h3>Programming</h3>
+            <div class="tags">
+              <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">R</span>
+              <span class="tag">C</span><span class="tag">C++</span><span class="tag">Java</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>Data Analysis &amp; Statistics</h3>
+            <div class="tags">
+              <span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Scikit-learn</span>
+              <span class="tag">Regression</span><span class="tag">Causal Inference</span>
+              <span class="tag">Hypothesis Testing</span><span class="tag">Statistical Visualization</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>Machine Learning</h3>
+            <div class="tags">
+              <span class="tag">TensorFlow</span><span class="tag">Model Evaluation</span>
+              <span class="tag">Classification</span><span class="tag">Time-series Analysis</span>
+              <span class="tag">TFT</span><span class="tag">N-BEATS</span><span class="tag">RNN</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>Visualization &amp; BI</h3>
+            <div class="tags">
+              <span class="tag">Tableau</span><span class="tag">Power BI</span><span class="tag">Excel</span>
+              <span class="tag">Matplotlib</span><span class="tag">Seaborn</span><span class="tag">ggplot2</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>Data &amp; Cloud Tools</h3>
+            <div class="tags">
+              <span class="tag">PostgreSQL</span><span class="tag">Azure Synapse Analytics</span>
+              <span class="tag">Azure ML Studio</span><span class="tag">PySpark</span>
+              <span class="tag">AWS</span><span class="tag">OpenCV</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>Web &amp; Automation</h3>
+            <div class="tags">
+              <span class="tag">Selenium</span><span class="tag">BeautifulSoup</span>
+              <span class="tag">Five9</span><span class="tag">OMS</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cell section full reveal" id="certifications">
+        <div class="section-head"><span class="num">05</span><h2>Certifications &amp; Training</h2><span class="rule"></span></div>
+        <div class="cert-grid">
+          <article class="cert"><h3>Google Advanced Data Analytics Specialization</h3><p>Coursera · Dec 2024</p></article>
+          <article class="cert"><h3>Google Business Intelligence Specialization</h3><p>Coursera · Dec 2024</p></article>
+          <article class="cert"><h3>Google Data Analytics Professional Certificate</h3><p>Coursera · Nov 2021</p></article>
+          <article class="cert"><h3>Essential Causal Inference Techniques for Data Science</h3><p>Coursera Guided Project · Dec 2022</p></article>
+          <article class="cert"><h3>Data Science and Machine Learning Internship Program</h3><p>Edureka · Nov 2023</p></article>
+        </div>
+      </section>
+
+      <section class="cell download-row">
+        <p>Interested in the details?</p>
+        <a class="download" href="Resume.pdf" download>Download Resume (PDF) <span>↓</span></a>
+      </section>
+
+      <footer class="cell footer">
+        <strong>Data · Research · Decisions</strong>
+        <span>© 2026</span>
+      </footer>
+    </div>
+  </main>
+
+  <script>
+    const revealItems = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      revealItems.forEach(item => observer.observe(item));
+    } else {
+      revealItems.forEach(item => item.classList.add('visible'));
+    }
+  </script>
+</body>
+</html>
