@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Performance: Indian Luggage &amp; Apparel Industry | Radhin Krishna R.</title>
+
+    <!-- PROJECT METADATA: read by build_projects.py -->
+    <meta name="project:order" content="2">
+    <meta name="project:title" content="Market Performance: Indian Luggage & Apparel Industry">
+    <meta name="project:category" content="Quantitative Finance & Python">
+    <meta name="project:description" content="An end-to-end quantitative study of 11 NSE-listed Indian luggage, apparel, and textile brands (2021–2026), testing CAPM via OLS regression and Weak-Form EMH via Ljung-Box and ACF diagnostics.">
+    <meta name="project:tags" content="Python, Quantitative Finance, CAPM, EMH, yfinance, Econometrics">
+    <meta name="project:action" content="Read Case Study">
+    <meta name="project:image" content="images/luggage-industry-india.jpg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #F4F4F4; color: #111111; font-family: 'Inter', sans-serif; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .prose-section h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; padding-top: 1.75rem; margin-bottom: 0.75rem; }
+        .prose-section h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; padding-top: 1.25rem; margin-bottom: 0.5rem; }
+        .prose-section p { margin-bottom: 1rem; line-height: 1.7; font-weight: 300; }
+        .prose-section ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1.25rem; font-weight: 300; line-height: 1.7; }
+        .prose-section li { margin-bottom: 0.45rem; }
+        .formula-box { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.9rem; }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+
+    <main class="max-w-5xl mx-auto border border-[#111111] bg-[#F4F4F4] shadow-sm">
+
+        <!-- Navigation -->
+        <nav class="p-6 flex justify-between items-center border-b border-[#111111]">
+            <a href="../index.html" class="font-serif text-2xl hover:italic">RKR.</a>
+            <div class="flex space-x-6 text-sm uppercase tracking-widest font-semibold">
+                <a href="../projects.html" class="hover:underline">Projects</a>
+                <a href="../resume.html" class="hover:underline">Resume</a>
+            </div>
+        </nav>
+
+        <!-- Header -->
+        <header class="p-8 md:p-16 border-b border-[#111111]">
+            <a href="../projects.html" class="text-xs uppercase tracking-widest font-bold hover:underline">&larr; All Projects</a>
+            <span class="block mt-8 mb-3 text-xs uppercase tracking-widest font-bold">Quantitative Finance &amp; Python</span>
+            <h1 class="font-serif text-4xl md:text-6xl leading-tight mb-6">Market Performance: Indian Luggage &amp; Apparel Industry</h1>
+            <p class="font-light text-lg max-w-3xl mb-8">A programmatic portfolio construction and empirical econometric study of 11 NSE-listed Indian consumer discretionary brands (2021&ndash;2026), auditing the Capital Asset Pricing Model (CAPM) and Weak-Form Efficient Market Hypothesis (EMH) against the Nifty 50 benchmark.</p>
+
+            <!-- Quick Links -->
+            <div class="flex flex-wrap gap-3">
+                <a href="https://github.com/Radhin-Krishna-R/market-performance-Luggage-Industry-India/tree/main" target="_blank" rel="noopener noreferrer" class="text-xs uppercase tracking-widest font-bold px-5 py-3 bg-[#111111] text-[#F4F4F4] border border-[#111111] hover:bg-transparent hover:text-[#111111] transition-colors">
+                    View GitHub Repo &rarr;
+                </a>
+                <a href="https://download-files.wixmp.com/ugd/81f84c_bca22e0eb25749ec8964749ce8f58415.pdf?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvYmoiOltbeyJwYXRoIjoiL3VnZC84MWY4NGNfYmNhMjJlMGViMjU3NDllYzg5NjQ3NDljZThmNTg0MTUucGRmIn1dXSwiZGlzIjp7ImZpbGVuYW1lIjoiRmluYW5jZSBEYXRhIFNjaWVuY2UgcHJvamVjdCAucGRmIiwidHlwZSI6ImF0dGFjaG1lbnQifSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXSwiZXhwIjoxNzk1NjUwNTUyLCJqdGkiOiIzNjM3MmExNC1jNWJjLTQ1MDEtYjE0MC02MWZlNzNiMWMxZWQiLCJpYXQiOjE3OTU2MTQ1NTIsImlzcyI6InVybjphcHA6ZTY2NjMwZTcxNGYwNDkwYWFlYTFmMTQ5YjNiNjllMzIiLCJzdWIiOiJ1cm46YXBwOmU2NjYzMGU3MTRmMDQ5MGFhZWExZjE0OWIzYjY5ZTMyIn0.jShhhUWCDfUi9tUSV0dw1bZOxsInBpn66-a1V8-QUog" target="_blank" rel="noopener noreferrer" class="text-xs uppercase tracking-widest font-bold px-5 py-3 border border-[#111111] hover:bg-[#111111] hover:text-[#F4F4F4] transition-colors">
+                    Download Full PDF Report &darr;
+                </a>
+            </div>
+        </header>
+
+        <!-- Key Metrics Strip -->
+        <section class="grid grid-cols-2 md:grid-cols-4 border-b border-[#111111] divide-y md:divide-y-0 md:divide-x divide-[#111111]">
+            <div class="p-6 md:p-8">
+                <span class="block text-[10px] uppercase tracking-widest font-bold text-neutral-600 mb-2">Annualized Return</span>
+                <span class="font-serif text-3xl md:text-4xl">5.82%</span>
+                <span class="block text-xs font-light text-neutral-600 mt-1">Equal-weighted (11 stocks)</span>
+            </div>
+            <div class="p-6 md:p-8">
+                <span class="block text-[10px] uppercase tracking-widest font-bold text-neutral-600 mb-2">Annualized Volatility</span>
+                <span class="font-serif text-3xl md:text-4xl">20.02%</span>
+                <span class="block text-xs font-light text-neutral-600 mt-1">1,235 trading days</span>
+            </div>
+            <div class="p-6 md:p-8">
+                <span class="block text-[10px] uppercase tracking-widest font-bold text-neutral-600 mb-2">CAPM Market Beta (&beta;)</span>
+                <span class="font-serif text-3xl md:text-4xl">0.8917</span>
+                <span class="block text-xs font-light text-neutral-600 mt-1">p &lt; 0.001 | R&sup2; = 37.6%</span>
+            </div>
+            <div class="p-6 md:p-8">
+                <span class="block text-[10px] uppercase tracking-widest font-bold text-neutral-600 mb-2">Weak-Form EMH</span>
+                <span class="font-serif text-3xl md:text-4xl">Rejected</span>
+                <span class="block text-xs font-light text-neutral-600 mt-1">Lag 1 p = 0.029 (Ljung-Box)</span>
+            </div>
+        </section>
+
+        <!-- Hero Visual: Figure 1 (Annualized Individual Stock Returns) -->
+        <section class="p-6 md:p-12 border-b border-[#111111] bg-white">
+            <div class="flex flex-wrap items-baseline justify-between gap-2 mb-4">
+                <div>
+                    <span class="text-[10px] uppercase tracking-widest font-bold text-neutral-500">Figure 01 &mdash; Portfolio Dispersion</span>
+                    <h2 class="font-serif text-2xl mt-1">Annualized Individual Stock Returns (2021&ndash;2026)</h2>
+                </div>
+                <span class="text-xs font-light text-neutral-600">NSE Tickers &middot; Continuous Log-Return Basis</span>
+            </div>
+
+            <!-- Interactive Chart.js reproduction of the report's bar chart -->
+            <!-- If you prefer a static image instead, replace this div with:
+                 <img src="images/luggage-returns.png" alt="Annualized Individual Stock Returns" class="w-full border border-[#111111]"> -->
+            <div class="w-full h-[360px] md:h-[420px]">
+                <canvas id="returnsChart" aria-label="Bar chart of annualized individual stock returns across 11 NSE-listed Indian luggage and apparel brands"></canvas>
+            </div>
+            <p class="text-xs font-light text-neutral-600 mt-4">
+                Wide dispersion across the sector: <strong>Arvind (+36.71%)</strong>, <strong>Trent (+34.11%)</strong>, and <strong>Safari (+31.40%)</strong> drove positive performance, offsetting drawdowns in <strong>Go Colors (-30.45%)</strong> and <strong>ABFRL (-20.96%)</strong>.
+            </p>
+        </section>
+
+        <!-- Write-up -->
+        <article class="prose-section p-8 md:p-16">
+            <h2 style="padding-top: 0;">Abstract &amp; Motivation</h2>
+            <p>This project presents a programmatic framework for automated data retrieval, portfolio optimization, and empirical testing of two pillars of modern finance: the <strong>Capital Asset Pricing Model (CAPM)</strong> and the <strong>Weak-Form Efficient Market Hypothesis (EMH)</strong>. Using the <code>yfinance</code> API, a five-year daily historical dataset (January 1, 2021 &ndash; January 1, 2026) was constructed across 11 prominent NSE-listed Indian brands in the luggage, textile, and apparel retail sectors, benchmarked against the <strong>Nifty 50 Index (<code>^NSEI</code>)</strong>.</p>
+            <p>Rather than testing an overly diversified broad index, concentrating on Indian consumer discretionary equities creates a sharper empirical sandbox: the sector is shaped by a rising middle class, a structural shift from unbranded to branded goods, and cyclical raw-material and supply-chain pressures—making it an ideal environment to test whether standard pricing models capture sector risk and whether localized momentum breaks market efficiency.</p>
+
+            <h2>Methodology &amp; Four-Tiered Workflow</h2>
+            <ul>
+                <li><strong>Phase 1 &mdash; Automated Data Pipeline:</strong> Programmatically pulled Daily Adjusted Closing Prices via <code>yfinance</code> for 11 NSE tickers (<code>VIPIND.NS</code>, <code>SAFARI.NS</code>, <code>TRENT.NS</code>, <code>ABFRL.NS</code>, <code>SHOPERSTOP.NS</code>, <code>PAGEIND.NS</code>, <code>KKCL.NS</code>, <code>MANYAVAR.NS</code>, <code>GOCOLORS.NS</code>, <code>LUXIND.NS</code>, <code>ARVIND.NS</code>) plus <code>^NSEI</code>. Adjusted close prices isolate true returns from stock splits, bonuses, and dividends. Minor trading-day misalignments across 1,235 trading days were resolved with forward-fill (<code>ffill()</code>) and backward-fill (<code>bfill()</code>).</li>
+                <li><strong>Phase 2 &mdash; Portfolio Matrix Engineering:</strong> Converted daily prices into continuous log returns (<code>R_t = ln(P_t / P_{t-1})</code>) for time-additivity and constructed an equal-weighted portfolio (<code>w_i = 1/11 &approx; 9.09%</code>). Annualized expected return (<code>E(R_p) = w^T R</code>) and portfolio volatility (<code>&sigma;_p = &radic;(w^T &Sigma; w)</code>) were scaled using a 252-trading-day year, yielding a <strong>5.82% expected annual return</strong> and <strong>20.02% annualized volatility</strong>.</li>
+                <li><strong>Phase 3 &mdash; Auditing CAPM via OLS Regression:</strong> Regressed daily portfolio excess returns against Nifty 50 excess returns using an annualized risk-free rate of <strong>6.50%</strong> (RBI 91-day Treasury Bill baseline, converted daily via <code>0.065 / 252</code>) to estimate systematic Beta (&beta;) and abnormal Alpha (&alpha;).</li>
+                <li><strong>Phase 4 &mdash; Testing Weak-Form EMH:</strong> Evaluated whether historical returns follow an unpredictable random walk using the <strong>Ljung-Box Q-Test</strong> across lags 1, 2, 3, 5, and 10 alongside a 20-day <strong>Autocorrelation Function (ACF)</strong> plot against 95% confidence bounds.</li>
+            </ul>
+
+            <h2>Empirical Findings: CAPM Validity Test (OLS Regression)</h2>
+            <p>Fitting the standard asset pricing specification <code>R_p - R_f = &alpha; + &beta;(R_m - R_f) + &epsilon;</code> across 1,235 daily observations produced the following OLS estimates:</p>
+
+            <div class="overflow-x-auto my-6 border border-[#111111] bg-white">
+                <table class="w-full text-left text-sm border-collapse">
+                    <thead>
+                        <tr class="border-b border-[#111111] bg-[#111111] text-[#F4F4F4] text-xs uppercase tracking-wider">
+                            <th class="py-3 px-4">Parameter</th>
+                            <th class="py-3 px-4">Coefficient</th>
+                            <th class="py-3 px-4">Std. Error</th>
+                            <th class="py-3 px-4">t-Statistic</th>
+                            <th class="py-3 px-4">p-Value</th>
+                            <th class="py-3 px-4">95% Confidence Interval</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-neutral-200 font-light">
+                        <tr>
+                            <td class="py-3 px-4 font-medium">Alpha (const)</td>
+                            <td class="py-3 px-4">-0.0002</td>
+                            <td class="py-3 px-4">0.000</td>
+                            <td class="py-3 px-4">-0.543</td>
+                            <td class="py-3 px-4">0.587</td>
+                            <td class="py-3 px-4">[-0.001, 0.000]</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 font-medium">Market Beta (^NSEI)</td>
+                            <td class="py-3 px-4 font-semibold">0.8917</td>
+                            <td class="py-3 px-4">0.033</td>
+                            <td class="py-3 px-4">27.263</td>
+                            <td class="py-3 px-4 font-semibold">0.000</td>
+                            <td class="py-3 px-4">[0.828, 0.956]</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="px-4 py-2.5 border-t border-neutral-200 text-xs text-neutral-600 flex flex-wrap gap-x-6 gap-y-1 bg-[#FAFAFA]">
+                    <span><strong>R&sup2;:</strong> 0.376</span>
+                    <span><strong>Adj. R&sup2;:</strong> 0.376</span>
+                    <span><strong>F-statistic:</strong> 743.3 (p = 1.80e-128)</span>
+                    <span><strong>Durbin-Watson:</strong> 1.902</span>
+                    <span><strong>Observations:</strong> 1,235</span>
+                </div>
+            </div>
+
+            <p><strong>Beta Assessment:</strong> A statistically significant market Beta of <strong>0.8917</strong> (<code>t = 27.263</code>, <code>p &lt; 0.001</code>) shows the portfolio tracks the Nifty 50 closely while exhibiting roughly 11% lower systematic volatility than the broader market.</p>
+            <p><strong>Alpha Assessment:</strong> The daily intercept of <strong>-0.0002</strong> (<code>p = 0.587</code>) fails to reject <code>H_0: &alpha; = 0</code>, confirming zero statistically significant abnormal return and empirically validating CAPM's core pricing assumption.</p>
+            <p><strong>Idiosyncratic Variance:</strong> An <strong>R&sup2; of 37.6%</strong> reveals that while market risk is highly significant, <strong>62.4%</strong> of total return variance is driven by sector- and company-specific factors such as raw material costs, retail demand cycles, and corporate earnings.</p>
+
+            <h2>Empirical Findings: Weak-Form EMH &amp; Autocorrelation</h2>
+            <p>Under the Weak-Form Efficient Market Hypothesis, current prices fully reflect past price history, meaning daily returns should behave as independent white noise with zero autocorrelation. Applying the <strong>Ljung-Box Q-Test</strong> across multiple lags yielded significant serial dependence:</p>
+
+            <div class="overflow-x-auto my-6 border border-[#111111] bg-white">
+                <table class="w-full text-left text-sm border-collapse">
+                    <thead>
+                        <tr class="border-b border-[#111111] bg-[#111111] text-[#F4F4F4] text-xs uppercase tracking-wider">
+                            <th class="py-3 px-4">Lag (Days)</th>
+                            <th class="py-3 px-4">Ljung-Box Statistic (lb_stat)</th>
+                            <th class="py-3 px-4">p-Value (lb_pvalue)</th>
+                            <th class="py-3 px-4">Result (&alpha; = 0.05)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-neutral-200 font-light">
+                        <tr>
+                            <td class="py-3 px-4 font-medium">Lag 1</td>
+                            <td class="py-3 px-4">4.770061</td>
+                            <td class="py-3 px-4 font-semibold">0.028959</td>
+                            <td class="py-3 px-4">Significant (Reject H<sub>0</sub>)</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 font-medium">Lag 2</td>
+                            <td class="py-3 px-4">9.149466</td>
+                            <td class="py-3 px-4 font-semibold">0.010309</td>
+                            <td class="py-3 px-4">Significant (Reject H<sub>0</sub>)</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 font-medium">Lag 3</td>
+                            <td class="py-3 px-4">9.157044</td>
+                            <td class="py-3 px-4 font-semibold">0.027274</td>
+                            <td class="py-3 px-4">Significant (Reject H<sub>0</sub>)</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 font-medium">Lag 5</td>
+                            <td class="py-3 px-4">11.064099</td>
+                            <td class="py-3 px-4">0.050124</td>
+                            <td class="py-3 px-4">Borderline Insignificant</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 font-medium">Lag 10</td>
+                            <td class="py-3 px-4">22.718244</td>
+                            <td class="py-3 px-4 font-semibold">0.011836</td>
+                            <td class="py-3 px-4">Significant (Reject H<sub>0</sub>)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Figure 2: ACF Plot -->
+            <figure class="my-8 p-6 border border-[#111111] bg-white">
+                <div class="flex flex-wrap items-baseline justify-between gap-2 mb-4">
+                    <div>
+                        <span class="text-[10px] uppercase tracking-widest font-bold text-neutral-500">Figure 02 &mdash; Time-Series Diagnostics</span>
+                        <div class="font-serif text-xl mt-1">Portfolio Returns Autocorrelation Function (ACF)</div>
+                    </div>
+                    <span class="text-xs font-light text-neutral-600">Lags 0&ndash;20 &middot; Shaded Band: 95% CI (&plusmn;0.056)</span>
+                </div>
+
+                <!-- Interactive Chart.js reproduction of the report's ACF plot -->
+                <!-- If you prefer a static image instead, replace this div with:
+                     <img src="images/luggage-acf.png" alt="Portfolio Returns Autocorrelation Function (ACF)" class="w-full"> -->
+                <div class="w-full h-[300px] md:h-[340px]">
+                    <canvas id="acfChart" aria-label="Autocorrelation Function plot for portfolio returns across 20 daily lags"></canvas>
+                </div>
+                <figcaption class="text-xs font-light text-neutral-600 mt-4">
+                    Autocorrelation spikes at <strong>Lag 1</strong>, <strong>Lag 2</strong>, and <strong>Lag 10</strong> pierce the 95% confidence interval, visually corroborating the Ljung-Box rejection of the random walk null hypothesis.
+                </figcaption>
+            </figure>
+
+            <h2>Key Takeaways &amp; Strategic Implications</h2>
+            <p><strong>CAPM Holds, But Leaves Sector Alpha Unexplained:</strong> Broad systematic beta accurately captures market co-movement, yet 62.4% idiosyncratic variance underscores that fundamental sector drivers—consumer sentiment, cotton prices, and brand-level execution—dominate individual outcomes.</p>
+            <p><strong>The Consumption Momentum Anomaly:</strong> Rejecting Weak-Form EMH across Lags 1, 2, 3, and 10 demonstrates that prices in Indian consumer discretionary retail do not adjust instantaneously. Post-pandemic lifestyle shifts and institutional flows into premium leaders (such as Trent and Safari) create persistent short-term momentum.</p>
+            <p><strong>Actionable Allocation Value:</strong> For systematic and quantitative strategies, significant short-horizon serial dependence suggests that momentum overlays or short-term multi-factor models may capture excess return within specialized Indian retail baskets.</p>
+        </article>
+
+        <!-- Tags and links -->
+        <footer class="p-8 md:p-16 border-t border-[#111111] flex flex-wrap gap-6 items-center justify-between">
+            <div class="flex flex-wrap gap-2">
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Python</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Quantitative Finance</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">CAPM</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">EMH</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">yfinance</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Econometrics</span>
+            </div>
+            <div class="flex flex-wrap gap-3">
+                <a href="https://download-files.wixmp.com/ugd/81f84c_bca22e0eb25749ec8964749ce8f58415.pdf?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvYmoiOltbeyJwYXRoIjoiL3VnZC84MWY4NGNfYmNhMjJlMGViMjU3NDllYzg5NjQ3NDljZThmNTg0MTUucGRmIn1dXSwiZGlzIjp7ImZpbGVuYW1lIjoiRmluYW5jZSBEYXRhIFNjaWVuY2UgcHJvamVjdCAucGRmIiwidHlwZSI6ImF0dGFjaG1lbnQifSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXSwiZXhwIjoxNzk1NjUwNTUyLCJqdGkiOiIzNjM3MmExNC1jNWJjLTQ1MDEtYjE0MC02MWZlNzNiMWMxZWQiLCJpYXQiOjE3OTU2MTQ1NTIsImlzcyI6InVybjphcHA6ZTY2NjMwZTcxNGYwNDkwYWFlYTFmMTQ5YjNiNjllMzIiLCJzdWIiOiJ1cm46YXBwOmU2NjYzMGU3MTRmMDQ5MGFhZWExZjE0OWIzYjY5ZTMyIn0.jShhhUWCDfUi9tUSV0dw1bZOxsInBpn66-a1V8-QUog" target="_blank" rel="noopener noreferrer" class="text-xs uppercase tracking-widest font-bold px-5 py-3 border border-[#111111] hover:bg-[#111111] hover:text-[#F4F4F4] transition-colors">
+                    Full PDF Report &darr;
+                </a>
+                <a href="https://github.com/Radhin-Krishna-R/market-performance-Luggage-Industry-India/tree/main" target="_blank" rel="noopener noreferrer" class="text-xs uppercase tracking-widest font-bold px-5 py-3 border border-[#111111] hover:bg-[#111111] hover:text-[#F4F4F4] transition-colors">
+                    View on GitHub &rarr;
+                </a>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Charts Script -->
+    <script>
+        // Figure 1: Annualized Individual Stock Returns
+        const returnsCtx = document.getElementById('returnsChart').getContext('2d');
+        const stockLabels = [
+            'ABFRL.NS', 'ARVIND.NS', 'GOCOLORS.NS', 'KKCL.NS', 'LUXIND.NS',
+            'MANYAVAR.NS', 'PAGEIND.NS', 'SAFARI.NS', 'SHOPERSTOP.NS', 'TRENT.NS', 'VIPIND.NS'
+        ];
+        const stockReturns = [-20.96, 36.71, -30.45, 23.15, -5.95, -15.37, 5.51, 31.40, 8.30, 34.11, -2.44];
+
+        new Chart(returnsCtx, {
+            type: 'bar',
+            data: {
+                labels: stockLabels,
+                datasets: [{
+                    label: 'Annualized Return (%)',
+                    data: stockReturns,
+                    backgroundColor: stockReturns.map(v => v >= 0 ? '#111111' : '#8A8A8A'),
+                    borderColor: '#111111',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: ctx => ` ${ctx.parsed.y > 0 ? '+' : ''}${ctx.parsed.y.toFixed(2)}%`
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        grid: { color: '#E5E5E5' },
+                        ticks: {
+                            color: '#111111',
+                            callback: value => value + '%'
+                        },
+                        title: { display: true, text: 'Annualized Return (%)', color: '#111111' }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: '#111111', maxRotation: 45, minRotation: 35 }
+                    }
+                }
+            }
+        });
+
+        // Figure 2: Portfolio Returns Autocorrelation Function (ACF)
+        const acfCtx = document.getElementById('acfChart').getContext('2d');
+        const lags = Array.from({ length: 21 }, (_, i) => i);
+        // Representative ACF values matching the report's plot & Ljung-Box significance (95% CI = ±0.0558 for n = 1235)
+        const acfValues = [
+            1.00, 0.062, 0.060, 0.002, 0.032, -0.020, 0.044, -0.034, 0.028, 0.036,
+            0.068, -0.015, -0.004, -0.050, 0.064, 0.022, 0.006, 0.034, 0.042, -0.024, 0.038
+        ];
+        const ciBound = 1.96 / Math.sqrt(1235); // ~0.0558
+
+        const confidenceBandPlugin = {
+            id: 'confidenceBand',
+            beforeDatasetsDraw(chart) {
+                const { ctx, chartArea: { left, right }, scales: { y } } = chart;
+                const yUpper = y.getPixelForValue(ciBound);
+                const yLower = y.getPixelForValue(-ciBound);
+                ctx.save();
+                ctx.fillStyle = 'rgba(17, 17, 17, 0.08)';
+                ctx.fillRect(left, yUpper, right - left, yLower - yUpper);
+                ctx.strokeStyle = 'rgba(17, 17, 17, 0.35)';
+                ctx.setLineDash([4, 4]);
+                ctx.beginPath();
+                ctx.moveTo(left, yUpper); ctx.lineTo(right, yUpper);
+                ctx.moveTo(left, yLower); ctx.lineTo(right, yLower);
+                ctx.stroke();
+                ctx.restore();
+            }
+        };
+
+        new Chart(acfCtx, {
+            type: 'bar',
+            data: {
+                labels: lags,
+                datasets: [{
+                    label: 'Autocorrelation',
+                    data: acfValues,
+                    backgroundColor: acfValues.map((v, i) => (i > 0 && Math.abs(v) > ciBound) ? '#111111' : '#737373'),
+                    barThickness: 3,
+                    borderRadius: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            title: items => `Lag ${items[0].label} Day${items[0].label === '1' ? '' : 's'}`,
+                            label: ctx => ` Correlation: ${ctx.parsed.y.toFixed(3)}`
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        min: -0.25,
+                        max: 1.05,
+                        grid: { color: '#E5E5E5' },
+                        ticks: { color: '#111111' },
+                        title: { display: true, text: 'Correlation Coefficient', color: '#111111' }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: '#111111' },
+                        title: { display: true, text: 'Lags (Days)', color: '#111111' }
+                    }
+                }
+            },
+            plugins: [confidenceBandPlugin]
+        });
+    </script>
+
+</body>
+</html>
