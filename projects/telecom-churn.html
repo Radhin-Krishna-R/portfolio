@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telecom Churn Dashboard | Radhin Krishna R.</title>
+
+    <!-- PROJECT METADATA: read by build_projects.py -->
+    <meta name="project:order" content="1">
+    <meta name="project:title" content="Telecom Churn Dashboard">
+    <meta name="project:category" content="BI & Tableau">
+    <meta name="project:description" content="An interactive Tableau dashboard for understanding, predicting, and reducing customer churn in telecom, with views for KPIs, customer profiles, contracts, and product performance.">
+    <meta name="project:tags" content="Tableau, Churn Analysis, Telecom, Dashboard">
+    <meta name="project:action" content="Read Case Study">
+    <meta name="project:image" content="images/telecom-churn.jpg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #F4F4F4; color: #111111; font-family: 'Inter', sans-serif; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .prose-section h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; padding-top: 1.5rem; margin-bottom: 0.75rem; }
+        .prose-section p { margin-bottom: 1rem; line-height: 1.7; font-weight: 300; }
+        .viz-wrap { overflow-x: auto; }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+
+    <main class="max-w-5xl mx-auto border border-[#111111] bg-[#F4F4F4] shadow-sm">
+
+        <!-- Navigation -->
+        <nav class="p-6 flex justify-between items-center border-b border-[#111111]">
+            <a href="../index.html" class="font-serif text-2xl hover:italic">RKR.</a>
+            <div class="flex space-x-6 text-sm uppercase tracking-widest font-semibold">
+                <a href="../projects.html" class="hover:underline">Projects</a>
+                <a href="../resume.html" class="hover:underline">Resume</a>
+            </div>
+        </nav>
+
+        <!-- Header -->
+        <header class="p-8 md:p-16 border-b border-[#111111]">
+            <a href="../projects.html" class="text-xs uppercase tracking-widest font-bold hover:underline">&larr; All Projects</a>
+            <span class="block mt-8 mb-3 text-xs uppercase tracking-widest font-bold">BI &amp; Tableau</span>
+            <h1 class="font-serif text-4xl md:text-6xl leading-tight mb-6">Telecom Churn Dashboard</h1>
+            <p class="font-light text-lg max-w-3xl">A Tableau dashboard for understanding, predicting, and reducing customer churn in telecom.</p>
+        </header>
+
+        <!-- Embedded Tableau Dashboard -->
+        <section class="p-4 md:p-8 border-b border-[#111111]">
+            <div class="viz-wrap">
+                <div class='tableauPlaceholder' id='viz1795611539499' style='position: relative'><noscript><a href='#'><img alt='Telecom Churn Prediction Dashboard' src='https://public.tableau.com/static/images/Te/TelecomChurnprediction/Dashboard1/1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='TelecomChurnprediction&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https://public.tableau.com/static/images/Te/TelecomChurnprediction/Dashboard1/1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-GB' /></object></div>
+                <script type='text/javascript'>
+                    var divElement = document.getElementById('viz1795611539499');
+                    var vizElement = divElement.getElementsByTagName('object')[0];
+                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1245px';vizElement.style.height='1227px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1245px';vizElement.style.height='1227px';} else { vizElement.style.width='100%';vizElement.style.height='4127px';}
+                    var scriptElement = document.createElement('script');
+                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+                    vizElement.parentNode.insertBefore(scriptElement, vizElement);
+                </script>
+            </div>
+        </section>
+
+        <!-- Write-up -->
+        <article class="prose-section p-8 md:p-16">
+            <h2>Why Churn Matters</h2>
+            <p>Customer churn, when subscribers cancel a telecom service, is one of the biggest challenges the industry faces. Its impact goes beyond lost revenue: it damages brand reputation, raises customer acquisition costs, and erodes loyalty. Proactive churn management is essential for long-term sustainability and growth.</p>
+
+            <h2>Objective and Scope</h2>
+            <p>This project builds a Tableau dashboard that helps telecom businesses understand, predict, and reduce churn. By visualizing complex telecom data, the dashboard uncovers patterns, identifies the main churn drivers, and supports data-driven retention strategies.</p>
+
+            <h2>Dashboard Structure</h2>
+            <p><strong>Overview:</strong> A snapshot of the churn landscape, including KPIs such as churn rate, customer segmentation, and trends over time.</p>
+            <p><strong>Customer Profile:</strong> Individual characteristics such as demographics, usage patterns, and churn propensity scores, showing which segments are most at risk.</p>
+            <p><strong>Account Analysis:</strong> Contract terms, tenure, and service bundles, revealing contract-related churn patterns and how service offerings affect retention.</p>
+            <p><strong>Product Performance:</strong> How products and services influence satisfaction and loyalty, using usage data, feedback, and product-level churn metrics.</p>
+
+            <h2>Key Features</h2>
+            <p><strong>Interactive filtering</strong> lets users segment data by tenure, contract type, or product category.</p>
+            <p><strong>Granularity control</strong> switches between aggregated and detailed views.</p>
+            <p><strong>Geographic insights</strong> use maps to show regional churn patterns for targeted retention efforts.</p>
+            <p><strong>Actionable recommendations</strong> highlight the areas of concern that need attention first.</p>
+
+            <h2>Data Source</h2>
+            <p>Publicly available telecom sample data from <a href="https://www.mavenanalytics.io/data-playground" target="_blank" class="underline">Maven Analytics</a>.</p>
+        </article>
+
+        <!-- Tags and links -->
+        <footer class="p-8 md:p-16 border-t border-[#111111] flex flex-wrap gap-4 items-center justify-between">
+            <div class="flex flex-wrap gap-2">
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Tableau</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Churn Analysis</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Telecom</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Dashboard</span>
+            </div>
+            <a href="https://public.tableau.com/views/TelecomChurnprediction/Dashboard1" target="_blank" class="text-xs uppercase tracking-widest font-bold px-6 py-3 border border-[#111111] hover:bg-[#111111] hover:text-[#F4F4F4] transition-colors">
+                Open on Tableau Public &rarr;
+            </a>
+        </footer>
+    </main>
+
+</body>
+</html>
