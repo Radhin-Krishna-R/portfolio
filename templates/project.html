@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT TITLE | Radhin Krishna R.</title>
+
+    <!-- PROJECT METADATA: read by build_projects.py. Edit these for every project. -->
+    <meta name="project:order" content="1">
+    <meta name="project:title" content="PROJECT TITLE">
+    <meta name="project:category" content="BI & Tableau">
+    <meta name="project:description" content="One or two sentences shown on the project card.">
+    <meta name="project:tags" content="Tag One, Tag Two, Tag Three">
+    <meta name="project:action" content="View Project">
+    <meta name="project:image" content="images/project-slug.jpg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #F4F4F4; color: #111111; font-family: 'Inter', sans-serif; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .prose-section h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; padding-top: 1.5rem; margin-bottom: 0.75rem; }
+        .prose-section p { margin-bottom: 1rem; line-height: 1.7; font-weight: 300; }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+
+    <main class="max-w-5xl mx-auto border border-[#111111] bg-[#F4F4F4] shadow-sm">
+
+        <!-- Navigation -->
+        <nav class="p-6 flex justify-between items-center border-b border-[#111111]">
+            <a href="../index.html" class="font-serif text-2xl hover:italic">RKR.</a>
+            <div class="flex space-x-6 text-sm uppercase tracking-widest font-semibold">
+                <a href="../projects.html" class="hover:underline">Projects</a>
+                <a href="../resume.html" class="hover:underline">Resume</a>
+            </div>
+        </nav>
+
+        <!-- Header -->
+        <header class="p-8 md:p-16 border-b border-[#111111]">
+            <a href="../projects.html" class="text-xs uppercase tracking-widest font-bold hover:underline">&larr; All Projects</a>
+            <span class="block mt-8 mb-3 text-xs uppercase tracking-widest font-bold">CATEGORY</span>
+            <h1 class="font-serif text-4xl md:text-6xl leading-tight mb-6">PROJECT TITLE</h1>
+            <p class="font-light text-lg max-w-3xl">One-line summary of the project.</p>
+        </header>
+
+        <!-- Optional: embedded dashboard, demo, or video -->
+        <!-- <section class="p-8 md:p-16 border-b border-[#111111]"> ...embed here... </section> -->
+
+        <!-- Body -->
+        <article class="prose-section p-8 md:p-16">
+            <h2>The Problem</h2>
+            <p>Why this project exists and what question it answers.</p>
+
+            <h2>Approach</h2>
+            <p>The data, the tools, and the key decisions you made.</p>
+
+            <h2>Results</h2>
+            <p>Findings, metrics, and what you learned.</p>
+        </article>
+
+        <!-- Tags and links -->
+        <footer class="p-8 md:p-16 border-t border-[#111111] flex flex-wrap gap-2 items-center justify-between">
+            <div class="flex flex-wrap gap-2">
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Tag One</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Tag Two</span>
+            </div>
+            <a href="https://github.com/your-username/your-repo" target="_blank" class="text-xs uppercase tracking-widest font-bold px-6 py-3 border border-[#111111] hover:bg-[#111111] hover:text-[#F4F4F4] transition-colors">
+                View Source &rarr;
+            </a>
+        </footer>
+    </main>
+
+</body>
+</html>
