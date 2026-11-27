@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPL 2022–23: Evaluating Attacking Indices | Radhin Krishna R.</title>
+
+    <!-- PROJECT METADATA: read by build_projects.py -->
+    <meta name="project:order" content="6">
+    <meta name="project:title" content="EPL 2022–23: Evaluating Attacking Indices">
+    <meta name="project:category" content="BI &amp; Tableau">
+    <meta name="project:description" content="Web-scraped FBref data and an interactive Tableau dashboard evaluating English Premier League 2022–23 attacking metrics—Goals vs. xG, Assists vs. xA, and Ball Progression.">
+    <meta name="project:tags" content="Tableau, Python, Web Scraping, Sports Analytics, FBref">
+    <meta name="project:action" content="Read Case Study">
+    <meta name="project:image" content="thumbnails/epl.jpeg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #F4F4F4; color: #111111; font-family: 'Inter', sans-serif; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .prose-section h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; padding-top: 1.5rem; margin-bottom: 0.75rem; }
+        .prose-section p { margin-bottom: 1rem; line-height: 1.7; font-weight: 300; }
+        .prose-section ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; font-weight: 300; line-height: 1.7; }
+        .prose-section li { margin-bottom: 0.35rem; }
+        .viz-wrap { width: 100%; overflow: hidden; }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+
+    <main class="max-w-5xl mx-auto border border-[#111111] bg-[#F4F4F4] shadow-sm">
+
+        <!-- Navigation -->
+        <nav class="p-6 flex justify-between items-center border-b border-[#111111]">
+            <a href="../index.html" class="font-serif text-2xl hover:italic">RKR.</a>
+            <div class="flex space-x-6 text-sm uppercase tracking-widest font-semibold">
+                <a href="../projects.html" class="hover:underline">Projects</a>
+                <a href="../resume.html" class="hover:underline">Resume</a>
+            </div>
+        </nav>
+
+        <!-- Header -->
+        <header class="p-8 md:p-16 border-b border-[#111111]">
+            <a href="../projects.html" class="text-xs uppercase tracking-widest font-bold hover:underline">&larr; All Projects</a>
+            <span class="block mt-8 mb-3 text-xs uppercase tracking-widest font-bold">BI &amp; Tableau &bull; Sports Analytics</span>
+            <h1 class="font-serif text-4xl md:text-6xl leading-tight mb-6">EPL 2022&ndash;23: Evaluating Attacking Indices</h1>
+            <p class="font-light text-lg max-w-3xl mb-8">Combining Python web scraping from FBref with interactive Tableau visualizations to evaluate English Premier League attackers beyond raw goals and assists—focusing on xG, xA, and ball progression.</p>
+            <div class="flex flex-wrap gap-4">
+                <a href="https://colab.research.google.com/drive/1j119T0_0PTO28wJSigM6NC7-arKTkoiS?usp=sharing" target="_blank" class="inline-block text-xs uppercase tracking-widest font-bold px-6 py-3 bg-[#111111] text-[#F4F4F4] border border-[#111111] hover:bg-[#F4F4F4] hover:text-[#111111] transition-colors">
+                    View Scraping Code (Colab) &rarr;
+                </a>
+                <a href="https://public.tableau.com/views/EPL2022-23/Dashboard1" target="_blank" class="inline-block text-xs uppercase tracking-widest font-bold px-6 py-3 border border-[#111111] hover:bg-[#111111] hover:text-[#F4F4F4] transition-colors">
+                    Open on Tableau Public &rarr;
+                </a>
+            </div>
+        </header>
+
+        <!-- Embedded Tableau Dashboard (Proportionally Scaled) -->
+        <section class="p-4 md:p-8 border-b border-[#111111]">
+            <div id="tableau-scale-container" class="viz-wrap" style="height: 855px;">
+                <div class='tableauPlaceholder' id='viz1795797520142' style='position: relative; width: 1220px; height: 1087px; transform-origin: top left;'>
+                    <noscript><a href='#'><img alt='EPL 2022-23 Attacking Indices Dashboard' src='https://public.tableau.com/static/images/EP/EPL2022-23/Dashboard1/1_rss.png' style='border: none' /></a></noscript>
+                    <object class='tableauViz' style='display:none; width: 1220px; height: 1087px;'>
+                        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                        <param name='embed_code_version' value='3' />
+                        <param name='site_root' value='' />
+                        <param name='name' value='EPL2022-23&#47;Dashboard1' />
+                        <param name='tabs' value='no' />
+                        <param name='toolbar' value='yes' />
+                        <param name='static_image' value='https://public.tableau.com/static/images/EP/EPL2022-23/Dashboard1/1.png' />
+                        <param name='animate_transition' value='yes' />
+                        <param name='display_static_image' value='yes' />
+                        <param name='display_spinner' value='yes' />
+                        <param name='display_overlay' value='yes' />
+                        <param name='display_count' value='yes' />
+                        <param name='language' value='en-GB' />
+                    </object>
+                </div>
+                <script type='text/javascript'>
+                    var divElement = document.getElementById('viz1795797520142');
+                    var vizElement = divElement.getElementsByTagName('object')[0];
+                    vizElement.style.width = '1220px';
+                    vizElement.style.height = '1087px';
+                    var scriptElement = document.createElement('script');
+                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+                    vizElement.parentNode.insertBefore(scriptElement, vizElement);
+
+                    function scaleTableau() {
+                        var container = document.getElementById('tableau-scale-container');
+                        if (!container) return;
+                        var scale = container.offsetWidth / 1220;
+                        divElement.style.transform = 'scale(' + scale + ')';
+                        container.style.height = Math.ceil(1087 * scale) + 'px';
+                    }
+                    window.addEventListener('resize', scaleTableau);
+                    window.addEventListener('load', scaleTableau);
+                    scaleTableau();
+                </script>
+            </div>
+        </section>
+
+        <!-- Write-up -->
+        <article class="prose-section p-8 md:p-16">
+            <h2>Introduction</h2>
+            <p>Traditional football metrics like goals scored and assists rarely tell the full story. <strong>Expected Goals (xG)</strong> and <strong>Expected Assists (xA)</strong> provide a deeper view by measuring the quality of chances taken and created, while <strong>Progressive Passes (PrP)</strong> and <strong>Progressive Carries (PrC)</strong> capture how effectively players advance the ball up the pitch and retain possession.</p>
+            <p>This project evaluates attacking players across the 2022&ndash;23 English Premier League season by pairing a Python web-scraping pipeline with a custom dark-themed Tableau dashboard.</p>
+
+            <h2>Data Acquisition &amp; Scraping Pipeline</h2>
+            <p>Player statistics were scraped directly from <strong>FBref.com</strong> using Python and Pandas in Google Colab:</p>
+            <ul>
+                <li><strong>HTML Table Extraction:</strong> Used <code>pd.read_html(url_df)[0]</code> to parse the target FBref player statistics table directly into a DataFrame.</li>
+                <li><strong>Multi-Level Header Cleanup:</strong> Flattened FBref's nested multi-index columns by stripping whitespace, parsing out <code>level_0</code> prefixes to retain clean stat names, and resetting the DataFrame index.</li>
+                <li><strong>Export for BI:</strong> Handled missing values and exported the cleaned dataset to <code>premier_league_stats.csv</code> for ingestion into Tableau.</li>
+            </ul>
+
+            <h2>Dashboard Design</h2>
+            <p>Built on a high-contrast black canvas with dark silver chart panels, the dashboard brings together three core visual comparisons:</p>
+            <p><strong>Goals vs. Expected Goals (Dumbbell Chart):</strong> Dual-axis comparison highlighting the gap between actual finishing output and underlying chance quality.</p>
+            <p><strong>Assists vs. Expected Assists (Dumbbell Chart):</strong> Reveals which playmakers benefited from clinical teammates versus those whose created chances went unconverted.</p>
+            <p><strong>Ball Progression &amp; Carrying (Stacked Bar Chart):</strong> Ranks the top 10 players by combined progressive passing and progressive carrying to distinguish passers from press-resistant ball carriers.</p>
+
+            <h2>Key Findings</h2>
+            <p><strong>Clinical Finishing Powered Man City's Title Charge:</strong> Erling Haaland (36.0 goals vs. 28.5 xG), Harry Kane (30.0 vs. 21.6 xG), Martin &Oslash;degaard, and Gabriel Martinelli consistently outperformed their expected goals, converting half-chances into goals. By contrast, Mohamed Salah and Ollie Watkins fell short of their xG, leaving clear-cut opportunities on the table.</p>
+            <p><strong>De Bruyne vs. Fernandes:</strong> Kevin De Bruyne posted 16 assists from 13.7 xA, amplified by Haaland's finishing. Meanwhile, Bruno Fernandes led the league in xA (16.8) yet finished with only 8 assists—a stark indicator of Manchester United's finishing deficit. Trent Alexander-Arnold showed a similar xA surplus at Liverpool.</p>
+            <p><strong>Two Modes of Ball Progression:</strong> Ben White, Bruno Fernandes, and Martin &Oslash;degaard drove progression primarily through incisive passing, whereas Pascal Gro&szlig;, Rodri, and Kieran Trippier excelled at carrying the ball forward under pressure.</p>
+        </article>
+
+        <!-- Tags and links -->
+        <footer class="p-8 md:p-16 border-t border-[#111111] flex flex-wrap gap-4 items-center justify-between">
+            <div class="flex flex-wrap gap-2">
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Tableau</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Python</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Web Scraping</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Sports Analytics</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">FBref</span>
+            </div>
+            <div class="flex flex-wrap gap-3">
+                <a href="https://colab.research.google.com/drive/1j119T0_0PTO28wJSigM6NC7-arKTkoiS?usp=sharing" target="_blank" class="text-xs uppercase tracking-widest font-bold px-5 py-3 border border-[#111111] hover:bg-[#111111] hover:text-[#F4F4F4] transition-colors">
+                    Scraping Code &rarr;
+                </a>
+                <a href="https://public.tableau.com/views/EPL2022-23/Dashboard1" target="_blank" class="text-xs uppercase tracking-widest font-bold px-5 py-3 border border-[#111111] hover:bg-[#111111] hover:text-[#F4F4F4] transition-colors">
+                    Tableau Public &rarr;
+                </a>
+            </div>
+        </footer>
+    </main>
+
+</body>
+</html>

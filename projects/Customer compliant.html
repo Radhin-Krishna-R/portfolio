@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Complaint Analysis | Radhin Krishna R.</title>
+
+    <!-- PROJECT METADATA: read by build_projects.py -->
+    <meta name="project:order" content="4">
+    <meta name="project:title" content="Customer Complaint Analysis">
+    <meta name="project:category" content="Machine Learning &amp; EDA">
+    <meta name="project:description" content="End-to-end data cleaning, exploratory data analysis, PCA feature selection, and multi-model classification to predict consumer financial disputes.">
+    <meta name="project:tags" content="Python, Scikit-Learn, Machine Learning, EDA, PCA">
+    <meta name="project:action" content="Read Case Study">
+    <meta name="project:image" content="thumbnails/customer compliant.jpeg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #F4F4F4; color: #111111; font-family: 'Inter', sans-serif; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .prose-section h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; padding-top: 1.75rem; margin-bottom: 0.75rem; }
+        .prose-section p { margin-bottom: 1rem; line-height: 1.7; font-weight: 300; }
+        .prose-section ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; font-weight: 300; line-height: 1.7; }
+        .prose-section li { margin-bottom: 0.35rem; }
+        .chart-card { background: #FFFFFF; border: 1px solid #111111; padding: 1.25rem; }
+        .chart-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; margin-bottom: 0.75rem; }
+        .chart-box { position: relative; height: 290px; width: 100%; }
+        .chart-box-tall { position: relative; height: 360px; width: 100%; }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+
+    <main class="max-w-5xl mx-auto border border-[#111111] bg-[#F4F4F4] shadow-sm">
+
+        <!-- Navigation -->
+        <nav class="p-6 flex justify-between items-center border-b border-[#111111]">
+            <a href="../index.html" class="font-serif text-2xl hover:italic">RKR.</a>
+            <div class="flex space-x-6 text-sm uppercase tracking-widest font-semibold">
+                <a href="../projects.html" class="hover:underline">Projects</a>
+                <a href="../resume.html" class="hover:underline">Resume</a>
+            </div>
+        </nav>
+
+        <!-- Header -->
+        <header class="p-8 md:p-16 border-b border-[#111111]">
+            <a href="../projects.html" class="text-xs uppercase tracking-widest font-bold hover:underline">&larr; All Projects</a>
+            <span class="block mt-8 mb-3 text-xs uppercase tracking-widest font-bold">Machine Learning &amp; EDA &bull; Edureka Internship</span>
+            <h1 class="font-serif text-4xl md:text-6xl leading-tight mb-6">Customer Complaint Analysis</h1>
+            <p class="font-light text-lg max-w-3xl mb-8">An end-to-end machine learning pipeline built to clean financial complaint records, uncover dispute drivers through exploratory analysis, and predict whether a consumer will dispute a company's resolution.</p>
+            <a href="https://github.com/Radhin-Krishna-R/Customer-complaint-analysis" target="_blank" class="inline-block text-xs uppercase tracking-widest font-bold px-6 py-3 bg-[#111111] text-[#F4F4F4] border border-[#111111] hover:bg-[#F4F4F4] hover:text-[#111111] transition-colors">
+                View Code &amp; Dataset on GitHub &rarr;
+            </a>
+        </header>
+
+        <!-- Write-up & Interactive HTML Charts -->
+        <article class="prose-section p-8 md:p-16">
+            <h2>Introduction &amp; Objective</h2>
+            <p>Completed during the Edureka Data Science and Machine Learning internship, this project covers the full machine learning lifecycle: data cleaning, exploratory data analysis (EDA), feature engineering, Principal Component Analysis (PCA), and comparative classification modeling.</p>
+            <p>When customers are dissatisfied with financial products—such as mortgages, credit cards, or debt collection—they file complaints. The primary objective is to predict the binary target variable <strong>Consumer disputed? (Yes/No)</strong> using Python (Pandas, Matplotlib, Seaborn, and Scikit-Learn) so institutions can proactively flag high-risk cases.</p>
+
+            <h2>Data Cleaning &amp; Feature Engineering</h2>
+            <ul>
+                <li><strong>Missing Value Pruning:</strong> Audited data types across train and test sets and dropped columns with more than 25% missing values.</li>
+                <li><strong>Temporal Feature Extraction:</strong> Extracted <code>Day</code>, <code>Month</code>, and <code>Year</code> from <em>Date received</em>, and derived <code>Week_Received</code>.</li>
+                <li><strong>Resolution Duration:</strong> Computed <code>Days held</code> (difference between date sent and date received) and clipped negative durations to zero.</li>
+                <li><strong>Imputation &amp; Cleanup:</strong> Imputed missing <em>State</em> values using the mode and dropped non-predictive identifiers (<em>Complaint ID</em>, <em>ZIP code</em>, and raw date columns).</li>
+            </ul>
+
+            <h2>Exploratory Data Analysis</h2>
+            <p>Visualizing the cleaned dataset reveals clear class imbalance and strong concentrations of disputes across specific financial products, submission channels, and institutions.</p>
+
+            <!-- Charts Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+
+                <!-- Chart 1: Total Disputes -->
+                <div class="chart-card">
+                    <div class="chart-title">Total No. of Disputes of Consumers</div>
+                    <div class="chart-box"><canvas id="chartTotalDisputes"></canvas></div>
+                </div>
+
+                <!-- Chart 2: Timely Response -->
+                <div class="chart-card">
+                    <div class="chart-title">Disputes by Timely Response</div>
+                    <div class="chart-box"><canvas id="chartTimely"></canvas></div>
+                </div>
+
+                <!-- Chart 3: Product-wise Disputes -->
+                <div class="chart-card md:col-span-2">
+                    <div class="chart-title">Total No. of Disputes Product-Wise</div>
+                    <div class="chart-box-tall"><canvas id="chartProducts"></canvas></div>
+                </div>
+
+                <!-- Chart 4: Submitted Via -->
+                <div class="chart-card">
+                    <div class="chart-title">Disputes Submitted via Different Sources</div>
+                    <div class="chart-box"><canvas id="chartSources"></canvas></div>
+                </div>
+
+                <!-- Chart 5: Company Response -->
+                <div class="chart-card">
+                    <div class="chart-title">Disputes by Company Response</div>
+                    <div class="chart-box"><canvas id="chartCompanyResponse"></canvas></div>
+                </div>
+
+                <!-- Chart 6: Year-Wise Disputes -->
+                <div class="chart-card">
+                    <div class="chart-title">Total No. of Disputes Over Year-Wise Complaints</div>
+                    <div class="chart-box"><canvas id="chartYears"></canvas></div>
+                </div>
+
+                <!-- Chart 7: Top 10 Companies -->
+                <div class="chart-card">
+                    <div class="chart-title">Top 10 Companies with Highest Complaints</div>
+                    <div class="chart-box"><canvas id="chartCompanies"></canvas></div>
+                </div>
+
+            </div>
+
+            <h2>Model Building &amp; Evaluation</h2>
+            <p>After splitting the dataset into dependent and independent variables and reducing dimensionality via <strong>PCA</strong>, seven classification algorithms were trained and benchmarked on both test and validation accuracy: Logistic Regression, Decision Tree, Random Forest, AdaBoost, Gradient Boosting, K-Neighbors, and XGBoost.</p>
+
+            <!-- Chart 8: Model Accuracies -->
+            <div class="chart-card my-8">
+                <div class="chart-title">Test and Validation Accuracies of Different Models</div>
+                <div class="chart-box-tall"><canvas id="chartModels"></canvas></div>
+            </div>
+
+            <h2>Conclusion</h2>
+            <p>Based on combined test and validation accuracy scores, <strong>Logistic Regression</strong> (~78.6% test / ~78.6% validation) alongside ensemble methods—<strong>Gradient Boosting</strong>, <strong>AdaBoost</strong>, and <strong>XGBoost</strong>—delivered the strongest and most consistent generalization performance, outperforming standalone Decision Trees and K-Neighbors.</p>
+        </article>
+
+        <!-- Tags and links -->
+        <footer class="p-8 md:p-16 border-t border-[#111111] flex flex-wrap gap-4 items-center justify-between">
+            <div class="flex flex-wrap gap-2">
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Python</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Scikit-Learn</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Machine Learning</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">EDA</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">PCA</span>
+            </div>
+            <a href="https://github.com/Radhin-Krishna-R/Customer-complaint-analysis" target="_blank" class="text-xs uppercase tracking-widest font-bold px-6 py-3 border border-[#111111] hover:bg-[#111111] hover:text-[#F4F4F4] transition-colors">
+                Open on GitHub &rarr;
+            </a>
+        </footer>
+    </main>
+
+    <script>
+        Chart.defaults.font.family = "'Inter', sans-serif";
+        Chart.defaults.color = '#111111';
+
+        const baseOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+                x: { grid: { display: false } },
+                y: { grid: { color: '#E5E5E5' }, beginAtZero: true }
+            }
+        };
+
+        // 1. Total Disputes
+        new Chart(document.getElementById('chartTotalDisputes'), {
+            type: 'bar',
+            data: {
+                labels: ['No', 'Yes'],
+                datasets: [{ data: [177000, 47500], backgroundColor: '#111111' }]
+            },
+            options: baseOptions
+        });
+
+        // 2. Timely Response
+        new Chart(document.getElementById('chartTimely'), {
+            type: 'bar',
+            data: {
+                labels: ['Yes', 'No'],
+                datasets: [{ data: [46800, 950], backgroundColor: '#F4C2C2', borderColor: '#111111', borderWidth: 1 }]
+            },
+            options: baseOptions
+        });
+
+        // 3. Product-wise Disputes
+        new Chart(document.getElementById('chartProducts'), {
+            type: 'bar',
+            data: {
+                labels: [
+                    'Bank account or service', 'Debt collection', 'Credit card', 'Consumer Loan',
+                    'Mortgage', 'Credit reporting', 'Student loan', 'Payday loan',
+                    'Prepaid card', 'Money transfers', 'Other financial service', 'Virtual currency'
+                ],
+                datasets: [{ data: [5150, 8200, 5950, 2050, 17600, 6750, 1450, 250, 150, 200, 50, 10], backgroundColor: '#1D4ED8' }]
+            },
+            options: {
+                ...baseOptions,
+                scales: {
+                    x: { grid: { display: false }, ticks: { maxRotation: 45, minRotation: 45, font: { size: 11 } } },
+                    y: { grid: { color: '#E5E5E5' }, beginAtZero: true }
+                }
+            }
+        });
+
+        // 4. Submitted Via
+        new Chart(document.getElementById('chartSources'), {
+            type: 'bar',
+            data: {
+                labels: ['Web', 'Referral', 'Postal mail', 'Phone', 'Fax', 'Email'],
+                datasets: [{ data: [34600, 7400, 2200, 2800, 700, 30], backgroundColor: '#D4D422' }]
+            },
+            options: baseOptions
+        });
+
+        // 5. Company Response
+        new Chart(document.getElementById('chartCompanyResponse'), {
+            type: 'bar',
+            data: {
+                labels: [
+                    'Closed w/ explanation', 'Closed w/ relief', 'Closed w/o relief',
+                    'Non-monetary relief', 'Monetary relief', 'Closed'
+                ],
+                datasets: [{ data: [39000, 250, 1800, 3800, 1800, 1300], backgroundColor: '#D99B26' }]
+            },
+            options: {
+                ...baseOptions,
+                scales: {
+                    x: { grid: { display: false }, ticks: { maxRotation: 35, minRotation: 35, font: { size: 10 } } },
+                    y: { grid: { color: '#E5E5E5' }, beginAtZero: true }
+                }
+            }
+        });
+
+        // 6. Year-wise Disputes
+        new Chart(document.getElementById('chartYears'), {
+            type: 'bar',
+            data: {
+                labels: ['2011', '2012', '2013', '2014', '2015', '2016'],
+                datasets: [{ data: [200, 6100, 8600, 11200, 12900, 8800], backgroundColor: '#993333' }]
+            },
+            options: baseOptions
+        });
+
+        // 7. Top 10 Companies
+        new Chart(document.getElementById('chartCompanies'), {
+            type: 'bar',
+            data: {
+                labels: [
+                    'Wells Fargo & Co.', 'Capital One', 'Bank of America', 'Citibank',
+                    'Equifax', 'Nationstar Mortgage', 'JPMorgan Chase', 'Ocwen',
+                    'Experian', 'TransUnion'
+                ],
+                datasets: [{ data: [3900, 1280, 5050, 2300, 3020, 1230, 3200, 2000, 1720, 1740], backgroundColor: '#D91AD9' }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { grid: { color: '#E5E5E5' }, beginAtZero: true },
+                    y: { grid: { display: false }, ticks: { font: { size: 10 } } }
+                }
+            }
+        });
+
+        // 8. Model Accuracies (Stacked Horizontal Bar matching report)
+        new Chart(document.getElementById('chartModels'), {
+            type: 'bar',
+            data: {
+                labels: [
+                    'XGBoost', 'K-Neighbors', 'Gradient Boosting', 'AdaBoost',
+                    'Random Forest', 'Decision Tree', 'Logistic Regression'
+                ],
+                datasets: [
+                    { label: 'Test Accuracy', data: [0.785, 0.745, 0.786, 0.786, 0.755, 0.675, 0.786], backgroundColor: '#1D4ED8' },
+                    { label: 'Validation Accuracy', data: [0.788, 0.758, 0.793, 0.790, 0.765, 0.678, 0.786], backgroundColor: '#F59E0B' }
+                ]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: true, position: 'top' } },
+                scales: {
+                    x: { stacked: true, max: 1.65, grid: { color: '#E5E5E5' }, title: { display: true, text: 'Combined Accuracy Score (Test + Validation)' } },
+                    y: { stacked: true, grid: { display: false } }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

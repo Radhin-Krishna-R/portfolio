@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ground Truth: What 42 Business Owners Taught Me About India's MSME Credit Gap | Radhin Krishna R.</title>
+
+    <!-- PROJECT METADATA: read by build_projects.py -->
+    <meta name="project:order" content="3">
+    <meta name="project:title" content="Ground Truth: What 42 Business Owners Taught Me About India's MSME Credit Gap">
+    <meta name="project:category" content="BI & Tableau">
+    <meta name="project:description" content="An interactive Tableau dashboard for exploring survey responses, uncovering demographic trends, and turning qualitative and quantitative feedback into actionable insights.">
+    <meta name="project:tags" content="Tableau, Survey Analysis, Data Visualization, Dashboard">
+    <meta name="project:action" content="Read Case Study">
+    <meta name="project:image" content="thumbnails/msme.jpeg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #F4F4F4; color: #111111; font-family: 'Inter', sans-serif; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .prose-section h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; padding-top: 1.5rem; margin-bottom: 0.75rem; }
+        .prose-section p { margin-bottom: 1rem; line-height: 1.7; font-weight: 300; }
+        .viz-wrap { width: 100%; overflow: hidden; }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+
+    <main class="max-w-5xl mx-auto border border-[#111111] bg-[#F4F4F4] shadow-sm">
+
+        <!-- Navigation -->
+        <nav class="p-6 flex justify-between items-center border-b border-[#111111]">
+            <a href="../index.html" class="font-serif text-2xl hover:italic">RKR.</a>
+            <div class="flex space-x-6 text-sm uppercase tracking-widest font-semibold">
+                <a href="../projects.html" class="hover:underline">Projects</a>
+                <a href="../resume.html" class="hover:underline">Resume</a>
+            </div>
+        </nav>
+
+        <!-- Header -->
+        <header class="p-8 md:p-16 border-b border-[#111111]">
+            <a href="../projects.html" class="text-xs uppercase tracking-widest font-bold hover:underline">&larr; All Projects</a>
+            <span class="block mt-8 mb-3 text-xs uppercase tracking-widest font-bold">BI &amp; Tableau</span>
+            <h1 class="font-serif text-4xl md:text-6xl leading-tight mb-6">Ground Truth: What 42 Business Owners Taught Me About India's MSME Credit Gap</h1>
+            <p class="font-light text-lg max-w-3xl">An interactive Tableau dashboard designed to transform raw survey responses into clear, segmentable insights.</p>
+        </header>
+
+        <!-- Embedded Tableau Dashboard -->
+        <section class="p-4 md:p-8 border-b border-[#111111]">
+            <div id="tableau-scale-container" class="viz-wrap" style="height: 610px;">
+                <div class='tableauPlaceholder' id='viz1795620615959' style='position: relative; width: 1300px; height: 827px; transform-origin: top left;'>
+                    <noscript><a href='#'><img alt='Survey Analysis Dashboard' src='https://public.tableau.com/static/images/Su/SurveyAnalysis_17894931531450/D0/1_rss.png' style='border: none' /></a></noscript>
+                    <object class='tableauViz' style='display:none; width: 1300px; height: 827px;'>
+                        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                        <param name='embed_code_version' value='3' />
+                        <param name='site_root' value='' />
+                        <param name='name' value='SurveyAnalysis_17894931531450&#47;D0' />
+                        <param name='tabs' value='no' />
+                        <param name='toolbar' value='yes' />
+                        <param name='static_image' value='https://public.tableau.com/static/images/Su/SurveyAnalysis_17894931531450/D0/1.png' />
+                        <param name='animate_transition' value='yes' />
+                        <param name='display_static_image' value='yes' />
+                        <param name='display_spinner' value='yes' />
+                        <param name='display_overlay' value='yes' />
+                        <param name='display_count' value='yes' />
+                        <param name='language' value='en-GB' />
+                    </object>
+                </div>
+                <script type='text/javascript'>
+                    var divElement = document.getElementById('viz1795620615959');
+                    var vizElement = divElement.getElementsByTagName('object')[0];
+                    vizElement.style.width = '1300px';
+                    vizElement.style.height = '827px';
+                    var scriptElement = document.createElement('script');
+                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+                    vizElement.parentNode.insertBefore(scriptElement, vizElement);
+
+                    function scaleTableau() {
+                        var container = document.getElementById('tableau-scale-container');
+                        if (!container) return;
+                        var scale = container.offsetWidth / 1300;
+                        divElement.style.transform = 'scale(' + scale + ')';
+                        container.style.height = Math.ceil(827 * scale) + 'px';
+                    }
+                    window.addEventListener('resize', scaleTableau);
+                    window.addEventListener('load', scaleTableau);
+                    scaleTableau();
+                </script>
+            </div>
+        </section>
+
+        <!-- Write-up -->
+        <article class="prose-section p-8 md:p-16">
+            <h2>Why Survey Analysis Matters</h2>
+            <p>Surveys are one of the most direct ways to capture stakeholder sentiment, customer preferences, and behavioral trends. However, raw survey data is often noisy, multi-dimensional, and difficult to interpret in spreadsheets. Structured visual analysis bridges the gap between collecting responses and making informed decisions.</p>
+
+            <h2>Objective and Scope</h2>
+            <p>This project presents an interactive Tableau dashboard built to streamline survey exploration. By organizing responses into intuitive visual views, the dashboard highlights key sentiment drivers, compares patterns across respondent groups, and surfaces outliers that warrant deeper attention.</p>
+
+            <h2>Dashboard Structure</h2>
+            <p><strong>Executive Summary:</strong> High-level KPIs including total respondent count, completion metrics, and headline sentiment or satisfaction scores.</p>
+            <p><strong>Demographic Breakdown:</strong> Distribution of respondents across key segments, helping contextualize results and identify representation gaps.</p>
+            <p><strong>Question-Level Analysis:</strong> Detailed breakdowns of individual survey items, including rating distributions, Likert-scale comparisons, and top-box scores.</p>
+            <p><strong>Cross-Tabulation &amp; Trends:</strong> Side-by-side comparisons showing how attitudes and preferences shift across different respondent cohorts.</p>
+
+            <h2>Key Features</h2>
+            <p><strong>Dynamic cross-filtering</strong> lets users slice the entire dashboard by respondent attributes to isolate specific cohorts.</p>
+            <p><strong>Clear visual hierarchy</strong> pairs summary metrics with granular distributions so both executives and analysts can find answers quickly.</p>
+            <p><strong>Interactive tooltips</strong> surface exact response counts and percentages without cluttering the primary canvas.</p>
+            <p><strong>Actionable focus</strong> makes it easy to spot the highest- and lowest-scoring areas to prioritize follow-up initiatives.</p>
+
+            <h2>Data Source</h2>
+            <p>Structured survey response dataset prepared and cleaned for multi-dimensional analysis in Tableau.</p>
+        </article>
+
+        <!-- Tags and links -->
+        <footer class="p-8 md:p-16 border-t border-[#111111] flex flex-wrap gap-4 items-center justify-between">
+            <div class="flex flex-wrap gap-2">
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Tableau</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Survey Analysis</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Data Visualization</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Dashboard</span>
+            </div>
+            <a href="https://public.tableau.com/views/SurveyAnalysis_17894931531450/D0" target="_blank" class="text-xs uppercase tracking-widest font-bold px-6 py-3 border border-[#111111] hover:bg-[#111111] hover:text-[#F4F4F4] transition-colors">
+                Open on Tableau Public &rarr;
+            </a>
+        </footer>
+    </main>
+
+</body>
+</html>

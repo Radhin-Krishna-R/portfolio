@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline Image Captioning &amp; Object Detection | Radhin Krishna R.</title>
+
+    <!-- PROJECT METADATA: read by build_projects.py -->
+    <meta name="project:order" content="3">
+    <meta name="project:title" content="Offline Image Captioning & Object Detection">
+    <meta name="project:category" content="Deep Learning &amp; Computer Vision">
+    <meta name="project:description" content="My final-year undergraduate capstone project: a lightweight, fully offline object detection and image captioning system using YOLOv11n, EfficientNet, and Attention-based Encoder-Decoder models, built for sub-200ms edge deployment.">
+    <meta name="project:tags" content="Deep Learning, Computer Vision, YOLOv11, TensorFlow, Streamlit">
+    <meta name="project:action" content="Read Case Study">
+    <meta name="project:image" content="thumbnails\image caption.jpeg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #F4F4F4; color: #111111; font-family: 'Inter', sans-serif; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .prose-section h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; padding-top: 1.5rem; margin-bottom: 0.75rem; }
+        .prose-section p { margin-bottom: 1rem; line-height: 1.7; font-weight: 300; }
+        .prose-section ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; font-weight: 300; line-height: 1.7; }
+        .prose-section li { margin-bottom: 0.35rem; }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+
+    <main class="max-w-5xl mx-auto border border-[#111111] bg-[#F4F4F4] shadow-sm">
+
+        <!-- Navigation -->
+        <nav class="p-6 flex justify-between items-center border-b border-[#111111]">
+            <a href="../index.html" class="font-serif text-2xl hover:italic">RKR.</a>
+            <div class="flex space-x-6 text-sm uppercase tracking-widest font-semibold">
+                <a href="../projects.html" class="hover:underline">Projects</a>
+                <a href="../resume.html" class="hover:underline">Resume</a>
+            </div>
+        </nav>
+
+        <!-- Header -->
+        <header class="p-8 md:p-16 border-b border-[#111111]">
+            <a href="../projects.html" class="text-xs uppercase tracking-widest font-bold hover:underline">&larr; All Projects</a>
+            <span class="block mt-8 mb-3 text-xs uppercase tracking-widest font-bold">Deep Learning &amp; Computer Vision &bull; Final Year UG Project</span>
+            <h1 class="font-serif text-4xl md:text-6xl leading-tight mb-6">Offline Image Captioning &amp; Object Detection</h1>
+            <p class="font-light text-lg max-w-3xl mb-8">Created for my final-year undergraduate capstone project, this is a compact, self-reliant computer vision system engineered for sub-200ms offline inference—laying the groundwork for assistive technologies, bionic vision, and neuro-prosthetic devices.</p>
+            <div class="flex flex-wrap gap-4">
+                <a href="../files\Final Review content.pdf" download class="inline-block text-xs uppercase tracking-widest font-bold px-6 py-3 bg-[#111111] text-[#F4F4F4] border border-[#111111] hover:bg-[#F4F4F4] hover:text-[#111111] transition-colors">
+                    Download Full Report (PDF) &darr;
+                </a>
+            </div>
+        </header>
+
+        <!-- Key Metrics Strip -->
+        <section class="grid grid-cols-2 md:grid-cols-4 border-b border-[#111111] divide-y md:divide-y-0 md:divide-x divide-[#111111]">
+            <div class="p-6 md:p-8">
+                <span class="block text-[10px] uppercase tracking-widest font-bold mb-2">Detection mAP@0.5</span>
+                <span class="font-serif text-3xl md:text-4xl">81%</span>
+                <span class="block text-xs font-light mt-1">YOLOv11n on MS COCO</span>
+            </div>
+            <div class="p-6 md:p-8">
+                <span class="block text-[10px] uppercase tracking-widest font-bold mb-2">Caption Latency</span>
+                <span class="font-serif text-3xl md:text-4xl">~180ms</span>
+                <span class="block text-xs font-light mt-1">Per image, fully offline</span>
+            </div>
+            <div class="p-6 md:p-8">
+                <span class="block text-[10px] uppercase tracking-widest font-bold mb-2">Webcam Latency</span>
+                <span class="font-serif text-3xl md:text-4xl">&lt;50ms</span>
+                <span class="block text-xs font-light mt-1">Real-time ~30 FPS feed</span>
+            </div>
+            <div class="p-6 md:p-8">
+                <span class="block text-[10px] uppercase tracking-widest font-bold mb-2">Model Footprint</span>
+                <span class="font-serif text-3xl md:text-4xl">2.6M</span>
+                <span class="block text-xs font-light mt-1">Params (6.5 GFLOPS)</span>
+            </div>
+        </section>
+
+        <!-- Write-up -->
+        <article class="prose-section p-8 md:p-16">
+            <h2>Problem &amp; Motivation</h2>
+            <p>Developed as my final-year undergraduate project, this work tackles a core limitation of modern visual AI: most state-of-the-art image captioning systems depend on cloud-hosted Large Language Models (LLMs) and heavy transformer pipelines. In assistive technologies—such as wearable vision aids, bionic eyes, and neuro-prosthetics—cloud dependency is a critical flaw. Network latency disrupts real-time spatial awareness, connectivity is not guaranteed, and streaming live visual feeds raises serious privacy concerns.</p>
+            <p>To bridge this gap, I built a lightweight, fully offline vision-to-language pipeline capable of real-time object detection and natural language captioning on edge hardware without external APIs or internet access.</p>
+
+            <h2>Two-Phase Architecture</h2>
+            <p><strong>Phase 1 — Real-Time Object Detection &amp; Classification:</strong> Uses a fine-tuned lightweight <strong>YOLOv11n</strong> model (2.6M parameters, 6.5 GFLOPS) trained on the MS COCO dataset (80+ object classes). Input frames are resized to 640&times;640, normalized, and filtered via Non-Maximum Suppression (NMS) to output bounding boxes, class labels, and confidence scores at ~30 FPS.</p>
+            <p><strong>Phase 2 — Image Captioning (Encoder-Decoder with Attention):</strong> Trained on the <strong>Flickr8k</strong> dataset (8,000 images with 5 human-written captions each). A pre-trained CNN backbone (EfficientNet / InceptionV3) extracts dense spatial feature maps from 299&times;299 images. These representations are passed through an attention-guided decoder (LSTM with Bahdanau attention and a custom Transformer Encoder-Decoder with causal masking) to generate captions autoregressively from a 10,000-word vocabulary using sparse categorical cross-entropy loss and teacher forcing.</p>
+
+            <!-- Image 1: Sample Captioning Predictions -->
+            <figure class="my-8 border border-[#111111] bg-white p-3">
+                <img src="../images/image caption 3.jpeg" alt="Sample image captioning predictions showing dogs with generated captions" class="w-full h-auto block">
+                <figcaption class="mt-3 text-xs font-light text-neutral-700 border-t border-neutral-200 pt-2">
+                    <strong>Figure 1 — Offline Captioning Outputs:</strong> Sample predictions generated on unseen test images (<em>"a grey dog runs in the forest"</em> and <em>"a black and white dog is swimming in a pool"</em>).
+                </figcaption>
+            </figure>
+
+            <h2>Performance Benchmarks</h2>
+            <div class="overflow-x-auto my-6">
+                <table class="w-full text-left border-collapse border border-[#111111] text-sm">
+                    <thead>
+                        <tr class="border-b border-[#111111] bg-[#EAEAEA]">
+                            <th class="p-3 font-semibold uppercase tracking-wider text-xs border-r border-[#111111]">Module</th>
+                            <th class="p-3 font-semibold uppercase tracking-wider text-xs border-r border-[#111111]">Backbone / Model</th>
+                            <th class="p-3 font-semibold uppercase tracking-wider text-xs border-r border-[#111111]">Latency</th>
+                            <th class="p-3 font-semibold uppercase tracking-wider text-xs">Key Performance</th>
+                        </tr>
+                    </thead>
+                    <tbody class="font-light divide-y divide-[#111111]">
+                        <tr>
+                            <td class="p-3 font-medium border-r border-[#111111]">Object Detection</td>
+                            <td class="p-3 border-r border-[#111111]">YOLOv11n (MS COCO)</td>
+                            <td class="p-3 border-r border-[#111111]">~120ms (Web) / ~30 FPS</td>
+                            <td class="p-3">81% mAP@0.5, 80% Precision, 70% Recall</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-medium border-r border-[#111111]">Image Captioning</td>
+                            <td class="p-3 border-r border-[#111111]">CNN + Attention Decoder (Flickr8k)</td>
+                            <td class="p-3 border-r border-[#111111]">~180ms / image</td>
+                            <td class="p-3">CIDEr 0.85; 41.7% peak val accuracy</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-medium border-r border-[#111111]">Live Webcam Edge</td>
+                            <td class="p-3 border-r border-[#111111]">EfficientNetB0 / YOLOv11n + OpenCV</td>
+                            <td class="p-3 border-r border-[#111111]">&lt;50ms / frame</td>
+                            <td class="p-3">~30% CPU, &lt;2 GB RAM usage</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Edge &amp; Web Deployment</h2>
+            <p><strong>Live Webcam Pipeline:</strong> Built with OpenCV (<code>cv2.VideoCapture</code>), capturing live frames, running local inference without cloud calls, and overlaying real-time bounding boxes and confidence labels under 50ms per frame.</p>
+
+            <!-- Image 2: Live Webcam Detection -->
+            <figure class="my-8 border border-[#111111] bg-white p-3">
+                <img src="../images/image caption 1.jpeg" alt="Real-time YOLO object detection via live webcam" class="w-full h-auto block">
+                <figcaption class="mt-3 text-xs font-light text-neutral-700 border-t border-neutral-200 pt-2">
+                    <strong>Figure 2 — Live Edge Webcam Inference:</strong> Real-time local detection of everyday objects (person, bottle, stop sign, umbrella, cell phone) running offline via OpenCV and YOLOv11n.
+                </figcaption>
+            </figure>
+
+            <p><strong>Interactive Streamlit Web Apps:</strong> Two local browser interfaces were deployed using Streamlit—a <em>Video Object Detection</em> app (supporting MP4/AVI/MOV uploads, confidence threshold sliders, COCO class filtering, and downloadable annotated video) and an <em>Image Captioner</em> app for instant offline scene descriptions.</p>
+
+            <!-- Image 3: Streamlit Image Captioner App -->
+            <figure class="my-8 border border-[#111111] bg-white p-3">
+                <img src="../images/image caption 2.jpeg" alt="Streamlit Image Captioner web application interface" class="w-full h-auto block">
+                <figcaption class="mt-3 text-xs font-light text-neutral-700 border-t border-neutral-200 pt-2">
+                    <strong>Figure 3 — Streamlit Image Captioner App:</strong> Local web interface displaying the encoder-decoder architecture overview and live caption generation for uploaded images.
+                </figcaption>
+            </figure>
+
+            <h2>Tech Stack &amp; Datasets</h2>
+            <ul>
+                <li><strong>Frameworks &amp; Libraries:</strong> Python 3.9, TensorFlow 2.12, Keras, Ultralytics YOLOv11, OpenCV 4.7, Streamlit 1.25, NumPy, Matplotlib.</li>
+                <li><strong>Datasets:</strong> MS COCO (330,000+ images, 80+ classes) for detection; Flickr8k (8,000 images, 40,000 captions) for sequence generation.</li>
+            </ul>
+        </article>
+
+        <!-- Tags and links -->
+        <footer class="p-8 md:p-16 border-t border-[#111111] flex flex-wrap gap-4 items-center justify-between">
+            <div class="flex flex-wrap gap-2">
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Deep Learning</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Computer Vision</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">YOLOv11</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">TensorFlow</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Streamlit</span>
+            </div>
+            <a href="../files/Final Review content.pdf" download class="text-xs uppercase tracking-widest font-bold px-6 py-3 border border-[#111111] hover:bg-[#111111] hover:text-[#F4F4F4] transition-colors">
+                Download Full Report (PDF) &darr;
+            </a>
+        </footer>
+    </main>
+
+</body>
+</html>
