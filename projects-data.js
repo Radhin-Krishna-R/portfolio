@@ -102,5 +102,64 @@ const projectsData = [
     "actionLabel": "Read Case Study",
     "link": "projects/epl.html",
     "image": "thumbnails/epl.jpeg"
+  },
+  {
+    "title": "Indian Super League: Playmakers & Goals",
+    "category": "BI & Tableau",
+    "description": "A dual-dashboard Tableau study of the Indian Super League (ISL), analyzing creative playmaking metrics alongside league-wide goal-scoring patterns.",
+    "tags": [
+      "Tableau",
+      "Sports Analytics",
+      "ISL",
+      "Football",
+      "Dashboard"
+    ],
+    "actionLabel": "Read Case Study",
+    "link": "projects/isl.html",
+    "image": "thumbnails/isl.jpeg"
+  },
+  {
+    "title": "Tableau & BI Learning Collection",
+    "category": "BI & Tableau",
+    "description": "A curated collection of eight interactive Tableau dashboards and custom chart experiments—covering AMD stock trends, Veranda analytics, Assassin's Creed, Billie Eilish, Circular Sankey, Jitter Bar, Dendrogram, and Sunburst charts.",
+    "tags": [
+      "Tableau",
+      "Business Intelligence",
+      "Data Visualization",
+      "Custom Charts"
+    ],
+    "actionLabel": "Read Case Study",
+    "link": "projects/learning tableau.html",
+    "image": "thumbnails/learning tableau.jpeg"
+  },
+  {
+    "title": "Women in Indian Cinema: Bechdel Test Analysis",
+    "category": "BI & Tableau",
+    "description": "An editorial Tableau dashboard evaluating female representation in Indian cinema through the Bechdel Test—tracking historical pass rates, box-office profitability, and genre-level disparities.",
+    "tags": [
+      "Tableau",
+      "Data Storytelling",
+      "Cinema Analytics",
+      "Bechdel Test",
+      "Dashboard"
+    ],
+    "actionLabel": "Read Case Study",
+    "link": "projects/women in indian cinema.html",
+    "image": "thumbnails/women in indian cinema.jpeg"
+  },
+  {
+    "title": "Macro, Climate & Infrastructure Dashboards",
+    "category": "BI & Tableau",
+    "description": "Four interactive Tableau data stories spanning a century of Kerala rainfall, global subsea optical cables, Brunei's economic profile, and India's 2024 pre-election macroeconomic landscape.",
+    "tags": [
+      "Tableau",
+      "Geospatial",
+      "Macroeconomics",
+      "Climate Data",
+      "Long-Form Viz"
+    ],
+    "actionLabel": "Read Case Study",
+    "link": "projects/extra.html",
+    "image": "thumbnails/extra.jpeg"
   }
 ];
