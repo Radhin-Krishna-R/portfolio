@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women in Indian Cinema: Bechdel Test Analysis | Radhin Krishna R.</title>
+
+    <!-- PROJECT METADATA: read by build_projects.py -->
+    <meta name="project:order" content="9">
+    <meta name="project:title" content="Women in Indian Cinema: Bechdel Test Analysis">
+    <meta name="project:category" content="BI &amp; Tableau">
+    <meta name="project:description" content="An editorial Tableau dashboard evaluating female representation in Indian cinema through the Bechdel Test—tracking historical pass rates, box-office profitability, and genre-level disparities.">
+    <meta name="project:tags" content="Tableau, Data Storytelling, Cinema Analytics, Bechdel Test, Dashboard">
+    <meta name="project:action" content="Read Case Study">
+    <meta name="project:image" content="thumbnails/women in indian cinema.jpeg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #F4F4F4; color: #111111; font-family: 'Inter', sans-serif; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .prose-section h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; padding-top: 1.75rem; margin-bottom: 0.75rem; }
+        .prose-section h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; margin-top: 1.25rem; margin-bottom: 0.5rem; }
+        .prose-section p { margin-bottom: 1rem; line-height: 1.75; font-weight: 300; }
+        .prose-section ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; font-weight: 300; line-height: 1.7; }
+        .prose-section li { margin-bottom: 0.35rem; }
+        .viz-wrap { width: 100%; overflow: hidden; }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+
+    <main class="max-w-5xl mx-auto border border-[#111111] bg-[#F4F4F4] shadow-sm">
+
+        <!-- Navigation -->
+        <nav class="p-6 flex justify-between items-center border-b border-[#111111]">
+            <a href="../index.html" class="font-serif text-2xl hover:italic">RKR.</a>
+            <div class="flex space-x-6 text-sm uppercase tracking-widest font-semibold">
+                <a href="../projects.html" class="hover:underline">Projects</a>
+                <a href="../resume.html" class="hover:underline">Resume</a>
+            </div>
+        </nav>
+
+        <!-- Header -->
+        <header class="p-8 md:p-16 border-b border-[#111111]">
+            <a href="../projects.html" class="text-xs uppercase tracking-widest font-bold hover:underline">&larr; All Projects</a>
+            <span class="block mt-8 mb-3 text-xs uppercase tracking-widest font-bold">BI &amp; Tableau &bull; Cultural &amp; Media Analytics</span>
+            <h1 class="font-serif text-4xl md:text-6xl leading-tight mb-6">Women in Indian Cinema</h1>
+            <p class="font-light text-lg max-w-3xl">An editorial Tableau case study measuring female representation in cinema using the Bechdel Test—examining how pass rates have evolved since 1990, whether representation impacts net profit, and which genres lead or lag behind.</p>
+        </header>
+
+        <!-- Key Metrics Strip -->
+        <section class="grid grid-cols-2 md:grid-cols-4 border-b border-[#111111] divide-y md:divide-y-0 md:divide-x divide-[#111111]">
+            <div class="p-6 md:p-8">
+                <span class="block text-[10px] uppercase tracking-widest font-bold mb-2">Avg. Profit (Pass)</span>
+                <span class="font-serif text-3xl md:text-4xl">$29M</span>
+                <span class="block text-xs font-light mt-1">vs. $25M for Failing films</span>
+            </div>
+            <div class="p-6 md:p-8">
+                <span class="block text-[10px] uppercase tracking-widest font-bold mb-2">Highest Pass Genre</span>
+                <span class="font-serif text-3xl md:text-4xl">71%</span>
+                <span class="block text-xs font-light mt-1">Musical (followed by Family)</span>
+            </div>
+            <div class="p-6 md:p-8">
+                <span class="block text-[10px] uppercase tracking-widest font-bold mb-2">Lowest Pass Genre</span>
+                <span class="font-serif text-3xl md:text-4xl">28%</span>
+                <span class="block text-xs font-light mt-1">Action (Adventure at 33%)</span>
+            </div>
+            <div class="p-6 md:p-8">
+                <span class="block text-[10px] uppercase tracking-widest font-bold mb-2">Historical Inflection</span>
+                <span class="font-serif text-3xl md:text-4xl">~2010</span>
+                <span class="block text-xs font-light mt-1">Pass &amp; Fail rates converge</span>
+            </div>
+        </section>
+
+        <!-- Embedded Tableau Dashboard (Proportionally Scaled from 1440x807) -->
+        <section class="p-4 md:p-8 border-b border-[#111111]">
+            <div id="tableau-scale-container" class="viz-wrap" style="height: 540px;">
+                <div class='tableauPlaceholder' id='viz1795840488246' style='position: relative; width: 1440px; height: 807px; transform-origin: top left;'>
+                    <noscript><a href='#'><img alt='Women in Indian Cinema Dashboard' src='https://public.tableau.com/static/images/Wo/WomeninIndiancinema/Dashboard2/1_rss.png' style='border: none' /></a></noscript>
+                    <object class='tableauViz' style='display:none; width: 1440px; height: 807px;'>
+                        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                        <param name='embed_code_version' value='3' />
+                        <param name='site_root' value='' />
+                        <param name='name' value='WomeninIndiancinema&#47;Dashboard2' />
+                        <param name='tabs' value='no' />
+                        <param name='toolbar' value='yes' />
+                        <param name='static_image' value='https://public.tableau.com/static/images/Wo/WomeninIndiancinema/Dashboard2/1.png' />
+                        <param name='animate_transition' value='yes' />
+                        <param name='display_static_image' value='yes' />
+                        <param name='display_spinner' value='yes' />
+                        <param name='display_overlay' value='yes' />
+                        <param name='display_count' value='yes' />
+                        <param name='language' value='en-GB' />
+                    </object>
+                </div>
+                <script type='text/javascript'>
+                    var divElement = document.getElementById('viz1795840488246');
+                    var vizElement = divElement.getElementsByTagName('object')[0];
+                    vizElement.style.width = '1440px';
+                    vizElement.style.height = '807px';
+                    var scriptElement = document.createElement('script');
+                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+                    vizElement.parentNode.insertBefore(scriptElement, vizElement);
+
+                    function scaleTableau() {
+                        var container = document.getElementById('tableau-scale-container');
+                        if (!container) return;
+                        var scale = container.offsetWidth / 1440;
+                        divElement.style.transform = 'scale(' + scale + ')';
+                        container.style.height = Math.ceil(807 * scale) + 'px';
+                    }
+                    window.addEventListener('resize', scaleTableau);
+                    window.addEventListener('load', scaleTableau);
+                    scaleTableau();
+                </script>
+            </div>
+        </section>
+
+        <!-- Detailed Write-up -->
+        <article class="prose-section p-8 md:p-16">
+            <h2>Context &amp; Motivation</h2>
+            <p>Cinema both reflects and shapes cultural norms. While discussions around gender representation in Indian and global cinema are often qualitative, data visualization allows us to test long-standing industry assumptions—such as whether female-inclusive storytelling is actually growing over time, and whether films with stronger female representation perform better or worse at the box office.</p>
+            <p>This dashboard translates those questions into a structured, magazine-style visual story built in Tableau, pairing quantitative benchmarks with editorial photography.</p>
+
+            <h2>Methodology: The Bechdel Test</h2>
+            <p>To measure representation consistently across decades and genres, the analysis uses the <strong>Bechdel Test</strong>—a standardized baseline metric that evaluates whether women have active, independent presence in a film's narrative. A movie passes only if it satisfies all three criteria:</p>
+            <ul>
+                <li><strong>Named Female Characters:</strong> The film features at least two named female characters.</li>
+                <li><strong>Dialogue:</strong> Those female characters speak to each other.</li>
+                <li><strong>Subject Matter:</strong> Their conversation is about something other than a man.</li>
+            </ul>
+            <p>While passing the Bechdel Test is a minimum bar rather than a complete measure of feminist filmmaking, failing it reveals how frequently female characters exist solely as supporting props to male storylines.</p>
+
+            <h2>Key Analytical Findings</h2>
+
+            <h3>1. Historical Convergence (1990s to Present)</h3>
+            <p>The time-series trend line reveals a clear structural shift over the past three decades. In the early 1990s, failing films dominated the landscape—frequently exceeding <strong>80%</strong> while passing films hovered below <strong>20%</strong>. Through the 2000s, the gap steadily narrowed until both trend lines converged around <strong>2010</strong>. Since then, passing and failing rates have tracked closely around the 50% mark, with passing films periodically overtaking failing ones in the late 2010s.</p>
+
+            <h3>2. Debunking the Box-Office Myth: Net Profitability</h3>
+            <p>A common commercial argument against female-led or female-inclusive scripts is that they carry higher financial risk. The profitability panel directly contradicts this assumption:</p>
+            <ul>
+                <li><strong>Overall Average Net Profit:</strong> Films that <strong>pass</strong> the Bechdel Test generate an average net profit of <strong>$29M</strong>, outperforming films that <strong>fail</strong> (<strong>$25M</strong>) by $4M per release.</li>
+                <li><strong>Decade-by-Decade Shift:</strong> While both categories saw high average profits in the 2000s (~$45M&ndash;$52M) and compressed margins in the 2010s (~$20M&ndash;$26M), the <strong>2020s</strong> show a dramatic divergence—passing films maintain strong profitability (~$28M) while failing films drop sharply (~$5M).</li>
+            </ul>
+
+            <h3>3. Genre-Level Disparities</h3>
+            <p>Breaking down pass rates across 17 genres exposes where representation thrives and where it remains heavily male-dominated:</p>
+            <ul>
+                <li><strong>Leading Genres:</strong> <strong>Musical (71%)</strong>, <strong>Family (61%)</strong>, <strong>Romance (60%)</strong>, and <strong>Horror (59%)</strong> lead in female representation, with <strong>Drama (50%)</strong> sitting right at parity.</li>
+                <li><strong>Middle Tier:</strong> Comedy (49%), Biography (49%), and Fantasy (44%) hover just under the halfway mark, while History (39%), Thriller (38%), Sport (38%), Sci-Fi (37%), Crime (36%), Animation (36%), and War (35%) fall into the mid-to-high 30s.</li>
+                <li><strong>Lagging Genres:</strong> <strong>Adventure (33%)</strong> and <strong>Action (28%)</strong> record the lowest pass rates—highlighting that high-budget spectacle genres still overwhelmingly center male ensembles.</li>
+            </ul>
+
+            <h2>Dashboard Design &amp; Visual Storytelling</h2>
+            <p>Rather than using a standard corporate grid, this Tableau dashboard was designed as a <strong>2&times;4 editorial collage</strong>. Each analytical component—definition, time-series convergence, profitability comparison, and genre breakdown—is housed in a distinct jewel-toned panel (emerald green, deep navy, plum, and dark slate) interleaved with curated cinema photography. This layout keeps the viewer anchored in the cultural subject while making every chart immediately scannable.</p>
+        </article>
+
+        <!-- Tags and links -->
+        <footer class="p-8 md:p-16 border-t border-[#111111] flex flex-wrap gap-4 items-center justify-between">
+            <div class="flex flex-wrap gap-2">
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Tableau</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Data Storytelling</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Cinema Analytics</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Bechdel Test</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Dashboard</span>
+            </div>
+            <a href="https://public.tableau.com/views/WomeninIndiancinema/Dashboard2" target="_blank" class="text-xs uppercase tracking-widest font-bold px-6 py-3 border border-[#111111] hover:bg-[#111111] hover:text-[#F4F4F4] transition-colors">
+                Open on Tableau Public &rarr;
+            </a>
+        </footer>
+    </main>
+
+</body>
+</html>

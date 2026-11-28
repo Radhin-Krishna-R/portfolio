@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau &amp; BI Learning Collection | Radhin Krishna R.</title>
+
+    <!-- PROJECT METADATA: read by build_projects.py -->
+    <meta name="project:order" content="8">
+    <meta name="project:title" content="Tableau & BI Learning Collection">
+    <meta name="project:category" content="BI &amp; Tableau">
+    <meta name="project:description" content="A curated collection of eight interactive Tableau dashboards and custom chart experiments—covering AMD stock trends, Veranda analytics, Assassin's Creed, Billie Eilish, Circular Sankey, Jitter Bar, Dendrogram, and Sunburst charts.">
+    <meta name="project:tags" content="Tableau, Business Intelligence, Data Visualization, Custom Charts">
+    <meta name="project:action" content="Read Case Study">
+    <meta name="project:image" content="thumbnails/learning tableau.jpeg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #F4F4F4; color: #111111; font-family: 'Inter', sans-serif; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .prose-section h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; padding-top: 1.5rem; margin-bottom: 0.75rem; }
+        .prose-section p { margin-bottom: 1rem; line-height: 1.7; font-weight: 300; }
+        .viz-wrap { width: 100%; overflow: hidden; }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+
+    <main class="max-w-5xl mx-auto border border-[#111111] bg-[#F4F4F4] shadow-sm">
+
+        <!-- Navigation -->
+        <nav class="p-6 flex justify-between items-center border-b border-[#111111]">
+            <a href="../index.html" class="font-serif text-2xl hover:italic">RKR.</a>
+            <div class="flex space-x-6 text-sm uppercase tracking-widest font-semibold">
+                <a href="../projects.html" class="hover:underline">Projects</a>
+                <a href="../resume.html" class="hover:underline">Resume</a>
+            </div>
+        </nav>
+
+        <!-- Header -->
+        <header class="p-8 md:p-16 border-b border-[#111111]">
+            <a href="../projects.html" class="text-xs uppercase tracking-widest font-bold hover:underline">&larr; All Projects</a>
+            <span class="block mt-8 mb-3 text-xs uppercase tracking-widest font-bold">BI &amp; Tableau &bull; Learning Archive</span>
+            <h1 class="font-serif text-4xl md:text-6xl leading-tight mb-6">Tableau &amp; BI Learning Collection</h1>
+            <p class="font-light text-lg max-w-3xl">Eight hands-on dashboards and custom chart builds created while learning Tableau and Business Intelligence—spanning domain dashboards (finance, business, gaming, music) and advanced non-standard chart geometries.</p>
+        </header>
+
+        <!-- Context -->
+        <article class="prose-section p-8 md:p-16 border-b border-[#111111]">
+            <h2>About This Collection</h2>
+            <p>This archive brings together two halves of my Tableau learning curve: <strong>full-page domain dashboards</strong> (practicing KPI layout design, time-series tracking, and thematic storytelling) and <strong>advanced custom chart builds</strong> (Circular Sankey, Jitter Bar, Dendrogram, and Sunburst charts) built using data densification, trigonometric calculations, and table calculations.</p>
+        </article>
+
+        <!-- Dashboard 1: AMD Stock Preview -->
+        <section class="p-4 md:p-8 border-b border-[#111111]">
+            <div class="flex flex-wrap items-baseline justify-between mb-2">
+                <h2 class="font-serif text-2xl">1. AMD Stock Preview</h2>
+                <a href="https://public.tableau.com/views/AMDstockpreview/Dashboard1" target="_blank" class="text-xs uppercase tracking-widest font-bold hover:underline">Open Fullscreen &rarr;</a>
+            </div>
+            <p class="font-light text-sm mb-4 max-w-3xl">A financial market dashboard tracking Advanced Micro Devices (AMD) stock price movements, trading volume, and historical performance trends.</p>
+            <div id="tableau-scale-container-1" class="viz-wrap" style="height: 550px;">
+                <div class='tableauPlaceholder' id='viz1795839718040' style='position: relative; width: 1524px; height: 895px; transform-origin: top left;'>
+                    <noscript><a href='#'><img alt='AMD Stock Preview Dashboard' src='https://public.tableau.com/static/images/AM/AMDstockpreview/Dashboard1/1_rss.png' style='border: none' /></a></noscript>
+                    <object class='tableauViz' style='display:none; width: 1524px; height: 895px;'>
+                        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                        <param name='embed_code_version' value='3' />
+                        <param name='site_root' value='' />
+                        <param name='name' value='AMDstockpreview&#47;Dashboard1' />
+                        <param name='tabs' value='no' />
+                        <param name='toolbar' value='yes' />
+                        <param name='static_image' value='https://public.tableau.com/static/images/AM/AMDstockpreview/Dashboard1/1.png' />
+                        <param name='animate_transition' value='yes' />
+                        <param name='display_static_image' value='yes' />
+                        <param name='display_spinner' value='yes' />
+                        <param name='display_overlay' value='yes' />
+                        <param name='display_count' value='yes' />
+                        <param name='language' value='en-GB' />
+                    </object>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard 2: Veranda -->
+        <section class="p-4 md:p-8 border-b border-[#111111]">
+            <div class="flex flex-wrap items-baseline justify-between mb-2">
+                <h2 class="font-serif text-2xl">2. Veranda Analytics Dashboard</h2>
+                <a href="https://public.tableau.com/views/veranda/Dashboard1" target="_blank" class="text-xs uppercase tracking-widest font-bold hover:underline">Open Fullscreen &rarr;</a>
+            </div>
+            <p class="font-light text-sm mb-4 max-w-3xl">A long-form business intelligence report exploring multi-section performance metrics, structured KPI summaries, and granular breakdowns.</p>
+            <div id="tableau-scale-container-2" class="viz-wrap" style="height: 1200px;">
+                <div class='tableauPlaceholder' id='viz1795839748706' style='position: relative; width: 1626px; height: 2138px; transform-origin: top left;'>
+                    <noscript><a href='#'><img alt='Veranda Dashboard' src='https://public.tableau.com/static/images/ve/veranda/Dashboard1/1_rss.png' style='border: none' /></a></noscript>
+                    <object class='tableauViz' style='display:none; width: 1626px; height: 2138px;'>
+                        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                        <param name='embed_code_version' value='3' />
+                        <param name='site_root' value='' />
+                        <param name='name' value='veranda&#47;Dashboard1' />
+                        <param name='tabs' value='no' />
+                        <param name='toolbar' value='yes' />
+                        <param name='static_image' value='https://public.tableau.com/static/images/ve/veranda/Dashboard1/1.png' />
+                        <param name='animate_transition' value='yes' />
+                        <param name='display_static_image' value='yes' />
+                        <param name='display_spinner' value='yes' />
+                        <param name='display_overlay' value='yes' />
+                        <param name='display_count' value='yes' />
+                        <param name='language' value='en-GB' />
+                    </object>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard 3: Assassin's Creed -->
+        <section class="p-4 md:p-8 border-b border-[#111111]">
+            <div class="flex flex-wrap items-baseline justify-between mb-2">
+                <h2 class="font-serif text-2xl">3. Assassin's Creed Franchise Overview</h2>
+                <a href="https://public.tableau.com/views/Assassinscreed/Dashboard1" target="_blank" class="text-xs uppercase tracking-widest font-bold hover:underline">Open Fullscreen &rarr;</a>
+            </div>
+            <p class="font-light text-sm mb-4 max-w-3xl">A themed entertainment dashboard practicing custom styling and comparative visual storytelling across titles in the Assassin's Creed series.</p>
+            <div id="tableau-scale-container-3" class="viz-wrap" style="height: 760px;">
+                <div class='tableauPlaceholder' id='viz1795839848653' style='position: relative; width: 1000px; height: 827px; transform-origin: top left;'>
+                    <noscript><a href='#'><img alt="Assassin's Creed Dashboard" src='https://public.tableau.com/static/images/As/Assassinscreed/Dashboard1/1_rss.png' style='border: none' /></a></noscript>
+                    <object class='tableauViz' style='display:none; width: 1000px; height: 827px;'>
+                        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                        <param name='embed_code_version' value='3' />
+                        <param name='site_root' value='' />
+                        <param name='name' value='Assassinscreed&#47;Dashboard1' />
+                        <param name='tabs' value='no' />
+                        <param name='toolbar' value='yes' />
+                        <param name='static_image' value='https://public.tableau.com/static/images/As/Assassinscreed/Dashboard1/1.png' />
+                        <param name='animate_transition' value='yes' />
+                        <param name='display_static_image' value='yes' />
+                        <param name='display_spinner' value='yes' />
+                        <param name='display_overlay' value='yes' />
+                        <param name='display_count' value='yes' />
+                        <param name='language' value='en-GB' />
+                    </object>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard 4: Best of Billie Eilish -->
+        <section class="p-4 md:p-8 border-b border-[#111111]">
+            <div class="flex flex-wrap items-baseline justify-between mb-2">
+                <h2 class="font-serif text-2xl">4. Best of Billie Eilish</h2>
+                <a href="https://public.tableau.com/views/bestofBillieEilish/Dashboard1" target="_blank" class="text-xs uppercase tracking-widest font-bold hover:underline">Open Fullscreen &rarr;</a>
+            </div>
+            <p class="font-light text-sm mb-4 max-w-3xl">A music analytics dashboard breaking down track popularity, audio features, and top-performing releases across Billie Eilish's catalog.</p>
+            <div id="tableau-scale-container-4" class="viz-wrap" style="height: 1350px;">
+                <div class='tableauPlaceholder' id='viz1795839875608' style='position: relative; width: 1020px; height: 1487px; transform-origin: top left;'>
+                    <noscript><a href='#'><img alt='Best of Billie Eilish Dashboard' src='https://public.tableau.com/static/images/be/bestofBillieEilish/Dashboard1/1_rss.png' style='border: none' /></a></noscript>
+                    <object class='tableauViz' style='display:none; width: 1020px; height: 1487px;'>
+                        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                        <param name='embed_code_version' value='3' />
+                        <param name='site_root' value='' />
+                        <param name='name' value='bestofBillieEilish&#47;Dashboard1' />
+                        <param name='tabs' value='no' />
+                        <param name='toolbar' value='yes' />
+                        <param name='static_image' value='https://public.tableau.com/static/images/be/bestofBillieEilish/Dashboard1/1.png' />
+                        <param name='animate_transition' value='yes' />
+                        <param name='display_static_image' value='yes' />
+                        <param name='display_spinner' value='yes' />
+                        <param name='display_overlay' value='yes' />
+                        <param name='display_count' value='yes' />
+                        <param name='language' value='en-GB' />
+                    </object>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard 5: Circular Sankey Chart -->
+        <section class="p-4 md:p-8 border-b border-[#111111]">
+            <div class="flex flex-wrap items-baseline justify-between mb-2">
+                <h2 class="font-serif text-2xl">5. Circular Sankey Chart</h2>
+                <a href="https://public.tableau.com/views/CircularSankeyChart_16887227306710/Dashboard1" target="_blank" class="text-xs uppercase tracking-widest font-bold hover:underline">Open Fullscreen &rarr;</a>
+            </div>
+            <p class="font-light text-sm mb-4 max-w-3xl">A radial flow visualization built using custom sigmoid curves and data densification to map proportional relationships in a compact circular layout.</p>
+            <div id="tableau-scale-container-5" class="viz-wrap" style="height: 760px;">
+                <div class='tableauPlaceholder' id='viz1795840053098' style='position: relative; width: 1000px; height: 827px; transform-origin: top left;'>
+                    <noscript><a href='#'><img alt='Circular Sankey Chart' src='https://public.tableau.com/static/images/Ci/CircularSankeyChart_16887227306710/Dashboard1/1_rss.png' style='border: none' /></a></noscript>
+                    <object class='tableauViz' style='display:none; width: 1000px; height: 827px;'>
+                        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                        <param name='embed_code_version' value='3' />
+                        <param name='site_root' value='' />
+                        <param name='name' value='CircularSankeyChart_16887227306710&#47;Dashboard1' />
+                        <param name='tabs' value='no' />
+                        <param name='toolbar' value='yes' />
+                        <param name='static_image' value='https://public.tableau.com/static/images/Ci/CircularSankeyChart_16887227306710/Dashboard1/1.png' />
+                        <param name='animate_transition' value='yes' />
+                        <param name='display_static_image' value='yes' />
+                        <param name='display_spinner' value='yes' />
+                        <param name='display_overlay' value='yes' />
+                        <param name='display_count' value='yes' />
+                        <param name='language' value='en-GB' />
+                    </object>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard 6: Jitter Bar Chart -->
+        <section class="p-4 md:p-8 border-b border-[#111111]">
+            <div class="flex flex-wrap items-baseline justify-between mb-2">
+                <h2 class="font-serif text-2xl">6. Jitter Bar Chart</h2>
+                <a href="https://public.tableau.com/views/JitterBarChart_16891746856100/Dashboard1" target="_blank" class="text-xs uppercase tracking-widest font-bold hover:underline">Open Fullscreen &rarr;</a>
+            </div>
+            <p class="font-light text-sm mb-4 max-w-3xl">A distribution-aware bar chart that plots individual data points with controlled jittering, exposing underlying density and outliers hidden by standard aggregates.</p>
+            <div id="tableau-scale-container-6" class="viz-wrap">
+                <div class='tableauPlaceholder' id='viz1795840078004' style='position: relative; width: 100%;'>
+                    <noscript><a href='#'><img alt='Jitter Bar Chart' src='https://public.tableau.com/static/images/Ji/JitterBarChart_16891746856100/Dashboard1/1_rss.png' style='border: none' /></a></noscript>
+                    <object class='tableauViz' style='display:none;'>
+                        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                        <param name='embed_code_version' value='3' />
+                        <param name='site_root' value='' />
+                        <param name='name' value='JitterBarChart_16891746856100&#47;Dashboard1' />
+                        <param name='tabs' value='no' />
+                        <param name='toolbar' value='yes' />
+                        <param name='static_image' value='https://public.tableau.com/static/images/Ji/JitterBarChart_16891746856100/Dashboard1/1.png' />
+                        <param name='animate_transition' value='yes' />
+                        <param name='display_static_image' value='yes' />
+                        <param name='display_spinner' value='yes' />
+                        <param name='display_overlay' value='yes' />
+                        <param name='display_count' value='yes' />
+                        <param name='language' value='en-GB' />
+                    </object>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard 7: Dendrogram Chart -->
+        <section class="p-4 md:p-8 border-b border-[#111111]">
+            <div class="flex flex-wrap items-baseline justify-between mb-2">
+                <h2 class="font-serif text-2xl">7. Dendrogram Chart</h2>
+                <a href="https://public.tableau.com/views/DendrogramChart_16885577349570/Dashboard1" target="_blank" class="text-xs uppercase tracking-widest font-bold hover:underline">Open Fullscreen &rarr;</a>
+            </div>
+            <p class="font-light text-sm mb-4 max-w-3xl">A branching hierarchical tree visualization engineered with custom path calculations to display category-to-subcategory breakdowns cleanly.</p>
+            <div id="tableau-scale-container-7" class="viz-wrap" style="height: 730px;">
+                <div class='tableauPlaceholder' id='viz1795840109275' style='position: relative; width: 1024px; height: 795px; transform-origin: top left;'>
+                    <noscript><a href='#'><img alt='Dendrogram Chart' src='https://public.tableau.com/static/images/De/DendrogramChart_16885577349570/Dashboard1/1_rss.png' style='border: none' /></a></noscript>
+                    <object class='tableauViz' style='display:none; width: 1024px; height: 795px;'>
+                        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                        <param name='embed_code_version' value='3' />
+                        <param name='site_root' value='' />
+                        <param name='name' value='DendrogramChart_16885577349570&#47;Dashboard1' />
+                        <param name='tabs' value='no' />
+                        <param name='toolbar' value='yes' />
+                        <param name='static_image' value='https://public.tableau.com/static/images/De/DendrogramChart_16885577349570/Dashboard1/1.png' />
+                        <param name='animate_transition' value='yes' />
+                        <param name='display_static_image' value='yes' />
+                        <param name='display_spinner' value='yes' />
+                        <param name='display_overlay' value='yes' />
+                        <param name='display_count' value='yes' />
+                        <param name='language' value='en-GB' />
+                    </object>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard 8: Sunburst Chart -->
+        <section class="p-4 md:p-8 border-b border-[#111111]">
+            <div class="flex flex-wrap items-baseline justify-between mb-2">
+                <h2 class="font-serif text-2xl">8. Sunburst Chart</h2>
+                <a href="https://public.tableau.com/views/SunbrustChart_16704206939740/Dashboard1" target="_blank" class="text-xs uppercase tracking-widest font-bold hover:underline">Open Fullscreen &rarr;</a>
+            </div>
+            <p class="font-light text-sm mb-4 max-w-3xl">A multi-level radial part-to-whole chart using concentric rings and polar coordinate math to visualize nested hierarchies in Tableau.</p>
+            <div id="tableau-scale-container-8" class="viz-wrap">
+                <div class='tableauPlaceholder' id='viz1795840165179' style='position: relative; width: 100%;'>
+                    <noscript><a href='#'><img alt='Sunburst Chart' src='https://public.tableau.com/static/images/Su/SunbrustChart_16704206939740/Dashboard1/1_rss.png' style='border: none' /></a></noscript>
+                    <object class='tableauViz' style='display:none;'>
+                        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                        <param name='embed_code_version' value='3' />
+                        <param name='site_root' value='' />
+                        <param name='name' value='SunbrustChart_16704206939740&#47;Dashboard1' />
+                        <param name='tabs' value='no' />
+                        <param name='toolbar' value='yes' />
+                        <param name='static_image' value='https://public.tableau.com/static/images/Su/SunbrustChart_16704206939740/Dashboard1/1.png' />
+                        <param name='animate_transition' value='yes' />
+                        <param name='display_static_image' value='yes' />
+                        <param name='display_spinner' value='yes' />
+                        <param name='display_overlay' value='yes' />
+                        <param name='display_count' value='yes' />
+                        <param name='language' value='en-GB' />
+                    </object>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tags and links -->
+        <footer class="p-8 md:p-16 flex flex-wrap gap-4 items-center justify-between">
+            <div class="flex flex-wrap gap-2">
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Tableau</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Business Intelligence</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Data Visualization</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Custom Charts</span>
+            </div>
+            <a href="https://public.tableau.com/views/AMDstockpreview/Dashboard1" target="_blank" class="text-xs uppercase tracking-widest font-bold px-6 py-3 border border-[#111111] hover:bg-[#111111] hover:text-[#F4F4F4] transition-colors">
+                View on Tableau Public &rarr;
+            </a>
+        </footer>
+    </main>
+
+    <!-- Load Tableau API once & scale all 8 dashboards -->
+    <script type="text/javascript">
+        var fixedDashboards = [
+            { containerId: 'tableau-scale-container-1', vizId: 'viz1795839718040', width: 1524, height: 895 },
+            { containerId: 'tableau-scale-container-2', vizId: 'viz1795839748706', width: 1626, height: 2138 },
+            { containerId: 'tableau-scale-container-3', vizId: 'viz1795839848653', width: 1000, height: 827 },
+            { containerId: 'tableau-scale-container-4', vizId: 'viz1795839875608', width: 1020, height: 1487 },
+            { containerId: 'tableau-scale-container-5', vizId: 'viz1795840053098', width: 1000, height: 827 },
+            { containerId: 'tableau-scale-container-7', vizId: 'viz1795840109275', width: 1024, height: 795 }
+        ];
+
+        var responsiveDashboards = [
+            { containerId: 'tableau-scale-container-6', vizId: 'viz1795840078004', ratio: 0.75 },
+            { containerId: 'tableau-scale-container-8', vizId: 'viz1795840165179', ratio: 0.75 }
+        ];
+
+        fixedDashboards.forEach(function (d) {
+            var divElement = document.getElementById(d.vizId);
+            var vizElement = divElement.getElementsByTagName('object')[0];
+            vizElement.style.width = d.width + 'px';
+            vizElement.style.height = d.height + 'px';
+        });
+
+        function scaleAllTableau() {
+            fixedDashboards.forEach(function (d) {
+                var container = document.getElementById(d.containerId);
+                var divElement = document.getElementById(d.vizId);
+                if (!container || !divElement) return;
+                var scale = container.offsetWidth / d.width;
+                divElement.style.transform = 'scale(' + scale + ')';
+                container.style.height = Math.ceil(d.height * scale) + 'px';
+            });
+
+            responsiveDashboards.forEach(function (d) {
+                var container = document.getElementById(d.containerId);
+                var divElement = document.getElementById(d.vizId);
+                if (!container || !divElement) return;
+                var vizElement = divElement.getElementsByTagName('object')[0];
+                var h = Math.ceil(container.offsetWidth * d.ratio);
+                vizElement.style.width = '100%';
+                vizElement.style.height = h + 'px';
+                container.style.height = h + 'px';
+            });
+        }
+
+        scaleAllTableau();
+
+        var scriptElement = document.createElement('script');
+        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+        document.body.appendChild(scriptElement);
+
+        window.addEventListener('resize', scaleAllTableau);
+        window.addEventListener('load', scaleAllTableau);
+    </script>
+
+</body>
+</html>

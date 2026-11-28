@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Super League: Playmakers &amp; Goals | Radhin Krishna R.</title>
+
+    <!-- PROJECT METADATA: read by build_projects.py -->
+    <meta name="project:order" content="7">
+    <meta name="project:title" content="Indian Super League: Playmakers & Goals">
+    <meta name="project:category" content="BI &amp; Tableau">
+    <meta name="project:description" content="A dual-dashboard Tableau study of the Indian Super League (ISL), analyzing creative playmaking metrics alongside league-wide goal-scoring patterns.">
+    <meta name="project:tags" content="Tableau, Sports Analytics, ISL, Football, Dashboard">
+    <meta name="project:action" content="Read Case Study">
+    <meta name="project:image" content="thumbnails/isl.jpeg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #F4F4F4; color: #111111; font-family: 'Inter', sans-serif; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .prose-section h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; padding-top: 1.5rem; margin-bottom: 0.75rem; }
+        .prose-section p { margin-bottom: 1rem; line-height: 1.7; font-weight: 300; }
+        .viz-wrap { width: 100%; overflow: hidden; }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+
+    <main class="max-w-5xl mx-auto border border-[#111111] bg-[#F4F4F4] shadow-sm">
+
+        <!-- Navigation -->
+        <nav class="p-6 flex justify-between items-center border-b border-[#111111]">
+            <a href="../index.html" class="font-serif text-2xl hover:italic">RKR.</a>
+            <div class="flex space-x-6 text-sm uppercase tracking-widest font-semibold">
+                <a href="../projects.html" class="hover:underline">Projects</a>
+                <a href="../resume.html" class="hover:underline">Resume</a>
+            </div>
+        </nav>
+
+        <!-- Header -->
+        <header class="p-8 md:p-16 border-b border-[#111111]">
+            <a href="../projects.html" class="text-xs uppercase tracking-widest font-bold hover:underline">&larr; All Projects</a>
+            <span class="block mt-8 mb-3 text-xs uppercase tracking-widest font-bold">BI &amp; Tableau &bull; Sports Analytics</span>
+            <h1 class="font-serif text-4xl md:text-6xl leading-tight mb-6">Indian Super League: Playmakers &amp; Goals</h1>
+            <p class="font-light text-lg max-w-3xl">Two interactive Tableau dashboards examining attacking output in the Indian Super League (ISL)—separating the league's primary chance creators from its most clinical goal-scoring trends.</p>
+        </header>
+
+        <!-- Short Context -->
+        <article class="prose-section p-8 md:p-16 border-b border-[#111111]">
+            <h2>Project Context</h2>
+            <p>Evaluating attacking impact in football requires looking at both sides of the final third: <strong>who creates the chances</strong> and <strong>how goals are actually scored</strong>. This two-part Tableau study breaks down the Indian Super League through both lenses.</p>
+            <p><strong>Dashboard 1 — Playmakers in ISL 2020:</strong> Highlights the league's top creative outlets, comparing playmaking contributions, assists, and chance-creation volume across clubs and players.</p>
+            <p><strong>Dashboard 2 — Goals in the Indian Super League:</strong> Tracks scoring distribution, top finishers, and team-level attacking efficiency to show how chance creation translates onto the scoresheet.</p>
+        </article>
+
+        <!-- Dashboard 1: Playmakers in ISL 2020 -->
+        <section class="p-4 md:p-8 border-b border-[#111111]">
+            <div class="flex flex-wrap items-baseline justify-between mb-4">
+                <h2 class="font-serif text-2xl">1. Playmakers in ISL 2020</h2>
+                <a href="https://public.tableau.com/views/PLAYMAKERSINISL2020/Dashboard1" target="_blank" class="text-xs uppercase tracking-widest font-bold hover:underline">Open Fullscreen &rarr;</a>
+            </div>
+            <div id="tableau-scale-container-1" class="viz-wrap" style="height: 760px;">
+                <div class='tableauPlaceholder' id='viz1795839274141' style='position: relative; width: 1000px; height: 827px; transform-origin: top left;'>
+                    <noscript><a href='#'><img alt='Playmakers in ISL 2020 Dashboard' src='https://public.tableau.com/static/images/PL/PLAYMAKERSINISL2020/Dashboard1/1_rss.png' style='border: none' /></a></noscript>
+                    <object class='tableauViz' style='display:none; width: 1000px; height: 827px;'>
+                        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                        <param name='embed_code_version' value='3' />
+                        <param name='site_root' value='' />
+                        <param name='name' value='PLAYMAKERSINISL2020&#47;Dashboard1' />
+                        <param name='tabs' value='no' />
+                        <param name='toolbar' value='yes' />
+                        <param name='static_image' value='https://public.tableau.com/static/images/PL/PLAYMAKERSINISL2020/Dashboard1/1.png' />
+                        <param name='animate_transition' value='yes' />
+                        <param name='display_static_image' value='yes' />
+                        <param name='display_spinner' value='yes' />
+                        <param name='display_overlay' value='yes' />
+                        <param name='display_count' value='yes' />
+                        <param name='language' value='en-GB' />
+                    </object>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard 2: Goals in Indian Super League -->
+        <section class="p-4 md:p-8 border-b border-[#111111]">
+            <div class="flex flex-wrap items-baseline justify-between mb-4">
+                <h2 class="font-serif text-2xl">2. Goals in the Indian Super League</h2>
+                <a href="https://public.tableau.com/views/GOALSININDIANSUPERLEAUGE/Dashboard1" target="_blank" class="text-xs uppercase tracking-widest font-bold hover:underline">Open Fullscreen &rarr;</a>
+            </div>
+            <div id="tableau-scale-container-2" class="viz-wrap" style="height: 760px;">
+                <div class='tableauPlaceholder' id='viz1795839333303' style='position: relative; width: 1000px; height: 827px; transform-origin: top left;'>
+                    <noscript><a href='#'><img alt='Goals in Indian Super League Dashboard' src='https://public.tableau.com/static/images/GO/GOALSININDIANSUPERLEAUGE/Dashboard1/1_rss.png' style='border: none' /></a></noscript>
+                    <object class='tableauViz' style='display:none; width: 1000px; height: 827px;'>
+                        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                        <param name='embed_code_version' value='3' />
+                        <param name='site_root' value='' />
+                        <param name='name' value='GOALSININDIANSUPERLEAUGE&#47;Dashboard1' />
+                        <param name='tabs' value='no' />
+                        <param name='toolbar' value='yes' />
+                        <param name='static_image' value='https://public.tableau.com/static/images/GO/GOALSININDIANSUPERLEAUGE/Dashboard1/1.png' />
+                        <param name='animate_transition' value='yes' />
+                        <param name='display_static_image' value='yes' />
+                        <param name='display_spinner' value='yes' />
+                        <param name='display_overlay' value='yes' />
+                        <param name='display_count' value='yes' />
+                        <param name='language' value='en-GB' />
+                    </object>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tags and links -->
+        <footer class="p-8 md:p-16 flex flex-wrap gap-4 items-center justify-between">
+            <div class="flex flex-wrap gap-2">
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Tableau</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Sports Analytics</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">ISL</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Football</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Dashboard</span>
+            </div>
+            <div class="flex flex-wrap gap-3">
+                <a href="https://public.tableau.com/views/PLAYMAKERSINISL2020/Dashboard1" target="_blank" class="text-xs uppercase tracking-widest font-bold px-5 py-3 border border-[#111111] hover:bg-[#111111] hover:text-[#F4F4F4] transition-colors">
+                    Playmakers Viz &rarr;
+                </a>
+                <a href="https://public.tableau.com/views/GOALSININDIANSUPERLEAUGE/Dashboard1" target="_blank" class="text-xs uppercase tracking-widest font-bold px-5 py-3 border border-[#111111] hover:bg-[#111111] hover:text-[#F4F4F4] transition-colors">
+                    Goals Viz &rarr;
+                </a>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Load Tableau API once & proportionally scale both dashboards -->
+    <script type="text/javascript">
+        var dashboards = [
+            { containerId: 'tableau-scale-container-1', vizId: 'viz1795839274141', width: 1000, height: 827 },
+            { containerId: 'tableau-scale-container-2', vizId: 'viz1795839333303', width: 1000, height: 827 }
+        ];
+
+        dashboards.forEach(function (d) {
+            var divElement = document.getElementById(d.vizId);
+            var vizElement = divElement.getElementsByTagName('object')[0];
+            vizElement.style.width = d.width + 'px';
+            vizElement.style.height = d.height + 'px';
+        });
+
+        var scriptElement = document.createElement('script');
+        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+        document.body.appendChild(scriptElement);
+
+        function scaleAllTableau() {
+            dashboards.forEach(function (d) {
+                var container = document.getElementById(d.containerId);
+                var divElement = document.getElementById(d.vizId);
+                if (!container || !divElement) return;
+                var scale = container.offsetWidth / d.width;
+                divElement.style.transform = 'scale(' + scale + ')';
+                container.style.height = Math.ceil(d.height * scale) + 'px';
+            });
+        }
+
+        window.addEventListener('resize', scaleAllTableau);
+        window.addEventListener('load', scaleAllTableau);
+        scaleAllTableau();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Macro, Climate &amp; Infrastructure Dashboards | Radhin Krishna R.</title>
+
+    <!-- PROJECT METADATA: read by build_projects.py -->
+    <meta name="project:order" content="10">
+    <meta name="project:title" content="Macro, Climate & Infrastructure Dashboards">
+    <meta name="project:category" content="BI &amp; Tableau">
+    <meta name="project:description" content="Four interactive Tableau data stories spanning a century of Kerala rainfall, global subsea optical cables, Brunei's economic profile, and India's 2024 pre-election macroeconomic landscape.">
+    <meta name="project:tags" content="Tableau, Geospatial, Macroeconomics, Climate Data, Long-Form Viz">
+    <meta name="project:action" content="Read Case Study">
+    <meta name="project:image" content="thumbnails/extra.jpeg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #F4F4F4; color: #111111; font-family: 'Inter', sans-serif; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .prose-section h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; padding-top: 1.5rem; margin-bottom: 0.75rem; }
+        .prose-section p { margin-bottom: 1rem; line-height: 1.7; font-weight: 300; }
+        .viz-wrap { width: 100%; overflow: hidden; }
+        .viz-scroll-box {
+            width: 100%;
+            height: 780px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            border: 1px solid #111111;
+            background: #FFFFFF;
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+
+    <main class="max-w-5xl mx-auto border border-[#111111] bg-[#F4F4F4] shadow-sm">
+
+        <!-- Navigation -->
+        <nav class="p-6 flex justify-between items-center border-b border-[#111111]">
+            <a href="../index.html" class="font-serif text-2xl hover:italic">RKR.</a>
+            <div class="flex space-x-6 text-sm uppercase tracking-widest font-semibold">
+                <a href="../projects.html" class="hover:underline">Projects</a>
+                <a href="../resume.html" class="hover:underline">Resume</a>
+            </div>
+        </nav>
+
+        <!-- Header -->
+        <header class="p-8 md:p-16 border-b border-[#111111]">
+            <a href="../projects.html" class="text-xs uppercase tracking-widest font-bold hover:underline">&larr; All Projects</a>
+            <span class="block mt-8 mb-3 text-xs uppercase tracking-widest font-bold">BI &amp; Tableau &bull; Public Data Stories</span>
+            <h1 class="font-serif text-4xl md:text-6xl leading-tight mb-6">Macro, Climate &amp; Infrastructure Dashboards</h1>
+            <p class="font-light text-lg max-w-3xl">Four interactive Tableau visualizations exploring large-scale public datasets—from 100 years of Kerala monsoon patterns and undersea internet cables to long-form economic deep dives on Brunei and India's 2024 election cycle.</p>
+        </header>
+
+        <!-- Context -->
+        <article class="prose-section p-8 md:p-16 border-b border-[#111111]">
+            <h2>Project Context</h2>
+            <p>This collection focuses on turning complex public-domain datasets into clear visual narratives. The first two dashboards use compact, single-screen layouts for climate time-series and global geospatial mapping. The final two are long-form vertical reports—fitted to the page width inside scrollable viewports so you can explore every section without breaking page flow.</p>
+        </article>
+
+        <!-- Dashboard 1: Rainfall in Kerala (Last 10 Decades) -->
+        <section class="p-4 md:p-8 border-b border-[#111111]">
+            <div class="flex flex-wrap items-baseline justify-between mb-2">
+                <h2 class="font-serif text-2xl">1. Rainfall in Kerala: Last 10 Decades</h2>
+                <a href="https://public.tableau.com/views/RAINFALLINKERALAFORLAST10DECADE/Dashboard2" target="_blank" class="text-xs uppercase tracking-widest font-bold hover:underline">Open Fullscreen &rarr;</a>
+            </div>
+            <p class="font-light text-sm mb-4 max-w-3xl">A century-long climate visualization tracking historical monsoon trends, seasonal variability, and extreme precipitation anomalies across Kerala.</p>
+            <div id="tableau-scale-container-1" class="viz-wrap" style="height: 760px;">
+                <div class='tableauPlaceholder' id='viz1795840974038' style='position: relative; width: 1000px; height: 827px; transform-origin: top left;'>
+                    <noscript><a href='#'><img alt='Rainfall in Kerala for Last 10 Decades' src='https://public.tableau.com/static/images/RA/RAINFALLINKERALAFORLAST10DECADE/Dashboard2/1_rss.png' style='border: none' /></a></noscript>
+                    <object class='tableauViz' style='display:none; width: 1000px; height: 827px;'>
+                        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                        <param name='embed_code_version' value='3' />
+                        <param name='site_root' value='' />
+                        <param name='name' value='RAINFALLINKERALAFORLAST10DECADE&#47;Dashboard2' />
+                        <param name='tabs' value='no' />
+                        <param name='toolbar' value='yes' />
+                        <param name='static_image' value='https://public.tableau.com/static/images/RA/RAINFALLINKERALAFORLAST10DECADE/Dashboard2/1.png' />
+                        <param name='animate_transition' value='yes' />
+                        <param name='display_static_image' value='yes' />
+                        <param name='display_spinner' value='yes' />
+                        <param name='display_overlay' value='yes' />
+                        <param name='display_count' value='yes' />
+                        <param name='language' value='en-GB' />
+                    </object>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard 2: Optical Cables Through Ocean -->
+        <section class="p-4 md:p-8 border-b border-[#111111]">
+            <div class="flex flex-wrap items-baseline justify-between mb-2">
+                <h2 class="font-serif text-2xl">2. Submarine Optical Cables Network</h2>
+                <a href="https://public.tableau.com/views/OpticalcablesThroughOcean/Dashboard1" target="_blank" class="text-xs uppercase tracking-widest font-bold hover:underline">Open Fullscreen &rarr;</a>
+            </div>
+            <p class="font-light text-sm mb-4 max-w-3xl">A geospatial visualization mapping the undersea fiber-optic cable routes that carry global internet traffic across oceans and connect international landing hubs.</p>
+            <div id="tableau-scale-container-2" class="viz-wrap" style="height: 760px;">
+                <div class='tableauPlaceholder' id='viz1795841025089' style='position: relative; width: 1000px; height: 827px; transform-origin: top left;'>
+                    <noscript><a href='#'><img alt='Optical Cables Through Ocean' src='https://public.tableau.com/static/images/Op/OpticalcablesThroughOcean/Dashboard1/1_rss.png' style='border: none' /></a></noscript>
+                    <object class='tableauViz' style='display:none; width: 1000px; height: 827px;'>
+                        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                        <param name='embed_code_version' value='3' />
+                        <param name='site_root' value='' />
+                        <param name='name' value='OpticalcablesThroughOcean&#47;Dashboard1' />
+                        <param name='tabs' value='no' />
+                        <param name='toolbar' value='yes' />
+                        <param name='static_image' value='https://public.tableau.com/static/images/Op/OpticalcablesThroughOcean/Dashboard1/1.png' />
+                        <param name='animate_transition' value='yes' />
+                        <param name='display_static_image' value='yes' />
+                        <param name='display_spinner' value='yes' />
+                        <param name='display_overlay' value='yes' />
+                        <param name='display_count' value='yes' />
+                        <param name='language' value='en-GB' />
+                    </object>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard 3: Brunei (Long-Form, Scrollable & Fit-to-Width) -->
+        <section class="p-4 md:p-8 border-b border-[#111111]">
+            <div class="flex flex-wrap items-baseline justify-between mb-2">
+                <h2 class="font-serif text-2xl">3. Brunei: Country &amp; Economic Deep Dive</h2>
+                <a href="https://public.tableau.com/views/Brunei_17043857616000/Dashboard1" target="_blank" class="text-xs uppercase tracking-widest font-bold hover:underline">Open Fullscreen &rarr;</a>
+            </div>
+            <p class="font-light text-sm mb-2 max-w-3xl">A long-form analytical profile examining Brunei's economic structure, demographic indicators, and development metrics.</p>
+            <span class="block text-[10px] uppercase tracking-widest font-bold text-neutral-600 mb-3">Scroll inside the frame below to explore the full report &darr;</span>
+
+            <div id="scroll-box-3" class="viz-scroll-box">
+                <div id="tableau-scale-container-3" class="viz-wrap">
+                    <div class='tableauPlaceholder' id='viz1795841066890' style='position: relative; width: 1000px; height: 4107px; transform-origin: top left;'>
+                        <noscript><a href='#'><img alt='Brunei Country Profile Dashboard' src='https://public.tableau.com/static/images/Br/Brunei_17043857616000/Dashboard1/1_rss.png' style='border: none' /></a></noscript>
+                        <object class='tableauViz' style='display:none; width: 1000px; height: 4107px;'>
+                            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                            <param name='embed_code_version' value='3' />
+                            <param name='site_root' value='' />
+                            <param name='name' value='Brunei_17043857616000&#47;Dashboard1' />
+                            <param name='tabs' value='no' />
+                            <param name='toolbar' value='yes' />
+                            <param name='static_image' value='https://public.tableau.com/static/images/Br/Brunei_17043857616000/Dashboard1/1.png' />
+                            <param name='animate_transition' value='yes' />
+                            <param name='display_static_image' value='yes' />
+                            <param name='display_spinner' value='yes' />
+                            <param name='display_overlay' value='yes' />
+                            <param name='display_count' value='yes' />
+                            <param name='language' value='en-GB' />
+                        </object>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard 4: Economic Analysis Ahead of Election 2024 (Long-Form, Scrollable & Fit-to-Width) -->
+        <section class="p-4 md:p-8 border-b border-[#111111]">
+            <div class="flex flex-wrap items-baseline justify-between mb-2">
+                <h2 class="font-serif text-2xl">4. Economic Analysis Ahead of Election 2024</h2>
+                <a href="https://public.tableau.com/views/economicanalysesaheadofelection2024/Dashboard1" target="_blank" class="text-xs uppercase tracking-widest font-bold hover:underline">Open Fullscreen &rarr;</a>
+            </div>
+            <p class="font-light text-sm mb-2 max-w-3xl">An extensive macroeconomic briefing reviewing growth, inflation, fiscal indicators, and sector performance heading into the 2024 general election.</p>
+            <span class="block text-[10px] uppercase tracking-widest font-bold text-neutral-600 mb-3">Scroll inside the frame below to explore the full report &darr;</span>
+
+            <div id="scroll-box-4" class="viz-scroll-box">
+                <div id="tableau-scale-container-4" class="viz-wrap">
+                    <div class='tableauPlaceholder' id='viz1795841107320' style='position: relative; width: 1232px; height: 7027px; transform-origin: top left;'>
+                        <noscript><a href='#'><img alt='Economic Analysis Ahead of Election 2024' src='https://public.tableau.com/static/images/ec/economicanalysesaheadofelection2024/Dashboard1/1_rss.png' style='border: none' /></a></noscript>
+                        <object class='tableauViz' style='display:none; width: 1232px; height: 7027px;'>
+                            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                            <param name='embed_code_version' value='3' />
+                            <param name='site_root' value='' />
+                            <param name='name' value='economicanalysesaheadofelection2024&#47;Dashboard1' />
+                            <param name='tabs' value='no' />
+                            <param name='toolbar' value='yes' />
+                            <param name='static_image' value='https://public.tableau.com/static/images/ec/economicanalysesaheadofelection2024/Dashboard1/1.png' />
+                            <param name='animate_transition' value='yes' />
+                            <param name='display_static_image' value='yes' />
+                            <param name='display_spinner' value='yes' />
+                            <param name='display_overlay' value='yes' />
+                            <param name='display_count' value='yes' />
+                            <param name='language' value='en-GB' />
+                        </object>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tags and links -->
+        <footer class="p-8 md:p-16 flex flex-wrap gap-4 items-center justify-between">
+            <div class="flex flex-wrap gap-2">
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Tableau</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Geospatial</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Macroeconomics</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Climate Data</span>
+                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 border border-[#111111]">Long-Form Viz</span>
+            </div>
+            <a href="https://public.tableau.com/views/economicanalysesaheadofelection2024/Dashboard1" target="_blank" class="text-xs uppercase tracking-widest font-bold px-6 py-3 border border-[#111111] hover:bg-[#111111] hover:text-[#F4F4F4] transition-colors">
+                Open on Tableau Public &rarr;
+            </a>
+        </footer>
+    </main>
+
+    <!-- Load Tableau API once & proportionally scale all 4 dashboards -->
+    <script type="text/javascript">
+        var dashboards = [
+            { containerId: 'tableau-scale-container-1', vizId: 'viz1795840974038', width: 1000, height: 827, scrollBoxId: null },
+            { containerId: 'tableau-scale-container-2', vizId: 'viz1795841025089', width: 1000, height: 827, scrollBoxId: null },
+            { containerId: 'tableau-scale-container-3', vizId: 'viz1795841066890', width: 1000, height: 4107, scrollBoxId: 'scroll-box-3' },
+            { containerId: 'tableau-scale-container-4', vizId: 'viz1795841107320', width: 1232, height: 7027, scrollBoxId: 'scroll-box-4' }
+        ];
+
+        dashboards.forEach(function (d) {
+            var divElement = document.getElementById(d.vizId);
+            var vizElement = divElement.getElementsByTagName('object')[0];
+            vizElement.style.width = d.width + 'px';
+            vizElement.style.height = d.height + 'px';
+        });
+
+        function scaleAllTableau() {
+            dashboards.forEach(function (d) {
+                var container = document.getElementById(d.containerId);
+                var divElement = document.getElementById(d.vizId);
+                var widthSource = d.scrollBoxId ? document.getElementById(d.scrollBoxId) : container;
+                if (!container || !divElement || !widthSource) return;
+
+                var availableWidth = widthSource.clientWidth;
+                var scale = availableWidth / d.width;
+                divElement.style.transform = 'scale(' + scale + ')';
+                container.style.height = Math.ceil(d.height * scale) + 'px';
+            });
+        }
+
+        scaleAllTableau();
+
+        var scriptElement = document.createElement('script');
+        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+        document.body.appendChild(scriptElement);
+
+        window.addEventListener('resize', scaleAllTableau);
+        window.addEventListener('load', scaleAllTableau);
+    </script>
+
+</body>
+</html>
