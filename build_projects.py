@@ -1,9 +1,3 @@
-"""
-Scans projects/*.html for <meta name="project:*"> tags and writes projects-data.js.
-
-Usage:  python build_projects.py
-Run it after adding or editing a project page.
-"""
 import json
 import pathlib
 from html.parser import HTMLParser
